@@ -1,4 +1,4 @@
-# Obsidian Canvas
+# Zendigitals
 
 A React + TypeScript starter built with Vite, Tailwind CSS, and Supabase.
 
