@@ -1,97 +1,111 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import TiltCard from "./TiltCard";
 
 const testimonials = [
   {
-    quote: "Zendigitalz didn't just build our platform — they engineered our market position. Revenue up 340% in 8 months.",
-    name: "Alexei Volkov",
-    role: "CEO",
-    company: "Nebula Finance",
+    logo: "hulu",
+    rating: "4.9",
+    quote:
+      "The progress tracker is fantastic. It’s motivating to see how much I've improved over time.",
+    name: "Kate Davis",
+    username: "frable_captain_8",
   },
   {
-    quote: "The precision. The craft. Every pixel, every interaction — deliberately architected. This is what elite looks like.",
-    name: "Maya Chen",
-    role: "CPO",
-    company: "Void Studios",
+    logo: "HBO max",
+    rating: "3.2",
+    quote:
+      "The app has a great mix of usability and performance. A seamless experience overall.",
+    name: "Martin Kazlauskas",
+    username: "sartorial_statue_59",
   },
   {
-    quote: "We interviewed 12 agencies. Zendigitalz was the only team that understood systems, not just aesthetics.",
-    name: "James Whitfield",
-    role: "Founder",
-    company: "Chromatic",
+    logo: "Disney+",
+    rating: "4.9",
+    quote:
+      "Consistent execution, intuitive design, and measurable improvement in engagement.",
+    name: "Sanjay Sharma",
+    username: "voracious_rainbows_68",
   },
   {
-    quote: "Our conversion rate tripled. Our brand perception shifted entirely. They don't build websites — they build authority.",
-    name: "Sophia Laurent",
-    role: "CMO",
-    company: "Scale Dynamics",
+    logo: "STARZ",
+    rating: "3.2",
+    quote:
+      "A well-balanced system built with long-term scalability in mind.",
+    name: "Tawanna Afumba",
+    username: "intrinsigent_joelam_15",
   },
   {
-    quote: "Working with Zendigitalz felt like upgrading from a sedan to a spacecraft. Technically flawless execution.",
-    name: "Raj Patel",
-    role: "CTO",
-    company: "Apex Protocol",
+    logo: "VIX",
+    rating: "4.9",
+    quote:
+      "Thoughtful architecture and premium execution across every detail.",
+    name: "Larry King",
+    username: "pendulous_unicorn_46",
+  },
+  {
+    logo: "prime video",
+    rating: "3.2",
+    quote:
+      "Precision-driven development with measurable impact.",
+    name: "Fatima Mohamed",
+    username: "salubrious_artist_72",
   },
 ];
 
 const TestimonialsSection = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-  const x = useTransform(scrollYProgress, [0, 1], ["5%", "-25%"]);
-
   return (
-    <section className="relative py-16 md:py-20 overflow-hidden" ref={containerRef}>
-      <div className="site-container mb-12">
+    <section className="py-16 md:py-24">
+      <div className="site-container">
+        {/* Header */}
         <ScrollReveal>
-          <p className="text-accent font-grotesk text-sm uppercase tracking-[0.3em] mb-4">Testimonials</p>
-          <h2 className="editorial-heading text-[clamp(2rem,5vw,4.5rem)] text-foreground max-w-3xl">
-            Client <span className="font-serif italic text-gradient-accent">Voices</span>
+          <h2 className="editorial-heading text-[clamp(2rem,4vw,3rem)] text-center text-foreground">
+            Our trusted{" "}
+            <span className=" bg-[#FF6A3D] text-accent-foreground px-2 py-1 rounded-sm">
+              clients
+            </span>
           </h2>
+          <p className="text-center text-muted-foreground mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+            Our mission is to drive progress and enhance the lives of our customers by
+            delivering superior products and services that exceed expectations.
+          </p>
         </ScrollReveal>
-      </div>
 
-      <motion.div
-        style={{ x }}
-        className="flex gap-6 site-container overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none scrollbar-hide"
-      >
-        {testimonials.map((t, i) => (
-          <ScrollReveal key={t.name} delay={i * 0.08} direction="right">
-            <TiltCard>
-              <div className="glass rounded-2xl p-8 md:p-10 min-w-[80vw] md:min-w-[400px] max-w-[450px] flex flex-col h-full group snap-start border border-foreground/[0.12] relative overflow-hidden transition-transform duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_-8px_hsl(var(--accent)/0.15)]">
-                {/* Inner reflection */}
-                <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.03] via-transparent to-transparent pointer-events-none rounded-2xl" />
-
-                {/* Oversized quotation mark */}
-                <span className="absolute top-4 left-6 text-[120px] leading-none font-serif text-accent/[0.06] pointer-events-none select-none">"</span>
-
-                {/* Quote */}
-                <p className="text-foreground text-xl md:text-2xl leading-relaxed mb-8 flex-1 font-light relative z-10">
-                  "{t.quote}"
-                </p>
-
-                {/* Attribution */}
-                <div className="flex items-center gap-4 relative z-10">
-                  <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-                    <span className="text-accent font-grotesk text-sm font-bold">{t.name[0]}</span>
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+          {testimonials.map((t, i) => (
+            <ScrollReveal key={t.username} delay={i * 0.05}>
+              <article
+                className="bg-card rounded-2xl p-6 h-[220px] flex flex-col justify-between shadow-sm border border-border transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg/40"
+              >
+                {/* Top */}
+                <div>
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="font-grotesk font-semibold text-sm capitalize text-card-foreground">
+                      {t.logo}
+                    </span>
+                    <span className="text-xs font-medium text-accent flex items-center gap-1">
+                      {t.rating}
+                      <span aria-hidden="true">★</span>
+                    </span>
                   </div>
-                  <div>
-                    <p className="text-foreground font-grotesk font-semibold text-sm">{t.name}</p>
-                    <p className="text-muted-foreground text-xs">{t.role}, {t.company}</p>
-                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                    “{t.quote}”
+                  </p>
                 </div>
 
-                {/* Active glow */}
-                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-1/2 h-px bg-accent/0 group-hover:bg-accent/40 blur-sm transition-all duration-500" />
-              </div>
-            </TiltCard>
-          </ScrollReveal>
-        ))}
-      </motion.div>
+                {/* Bottom */}
+                <div>
+                  <p className="text-sm font-semibold text-card-foreground">
+                    {t.name}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {t.username}
+                  </p>
+                </div>
+              </article>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import holographicFluid from "@/assets/holographic-fluid.png";
+import holographicFluid from "@/assets/aboutus.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const callouts = [
@@ -39,15 +39,6 @@ const AboutSection = () => {
   const isMobile = useIsMobile();
   const autoTriggered = useRef(false);
 
-  /* scroll-driven parallax for the image block */
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const imageParallaxY = useTransform(scrollYProgress, [0, 1], [60, -60]);
-  const innerParallaxY = useTransform(scrollYProgress, [0, 1], [-30, 30]);
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.08, 1, 1.03]);
-
   const words =
     "We design digital leverage. We don't follow trends — we architect systems that set them. Every brand we touch becomes undeniable.".split(
       " "
@@ -71,51 +62,35 @@ const AboutSection = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="relative py-16 md:py-20 site-container overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden"
     >
       {/* Background Accent Glow */}
       <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="relative max-w-6xl mx-auto">
+      <div className="relative site-container max-w-6xl">
         {/* Section Label */}
         <ScrollReveal>
-          <p className="text-xs tracking-[0.4em] uppercase text-accent mb-16">
-            About Zendigitalz
+          <p className="text-xs tracking-[0.4em] uppercase text-accent mb-10">
+            About <span className="bg-[#FF6A3D] text-white px-2 py-2 rounded-md">Zendigitalz</span> 
           </p>
         </ScrollReveal>
 
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           {/* LEFT — Editorial Authority */}
           <div className="lg:col-span-6">
-            <h2 className="text-[clamp(2rem,3.5vw,3rem)] leading-[1.3] font-light tracking-tight text-foreground max-w-2xl">
-              {words.map((word, i) => (
-                <motion.span
-                  key={i}
-                  className={`inline-block mr-[0.35em] ${i < 3 ? "font-semibold" : ""}`}
-                  initial={{ opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.45,
-                    delay: i * 0.02,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </h2>
+              <h2 className="text-[clamp(2.4rem,3.4vw,3.2rem)] leading-tight font-light tracking-tight text-foreground max-w-2xl">
+                We don’t build campaigns. We engineer{" "}
+                <span className="font-medium text-accent">systems.</span>
+              </h2>
 
-            <div className="mt-10 border-l border-border pl-6">
-              <p className="text-muted-foreground text-lg leading-relaxed max-w-lg">
-                We operate at the intersection of strategic brand positioning
-                and technical execution. Every engagement is engineered as a
-                scalable digital command center — built for dominance.
+              <p className="text-muted-foreground/80 text-base leading-relaxed max-w-md mt-4">
+                Every engagement becomes a structured digital command center —
+                built to scale authority, narrative, and conversion.
               </p>
-            </div>
+
 
             {/* ── CALLOUTS — Desktop / Tablet (inline below manifesto) ── */}
-            <div className="hidden md:flex flex-col gap-4 mt-12 relative">
+            <div className="hidden md:flex flex-col gap-4 mt-10 relative">
               {callouts.map((c, i) => {
                 const isActive = activeIndex === i;
                 return (
@@ -159,23 +134,23 @@ const AboutSection = () => {
                     <motion.button
                       onMouseEnter={() => !isMobile && setActiveIndex(i)}
                       onClick={() => handleActivate(i)}
-                      className={`w-full text-left rounded-2xl border px-5 py-4 transition-all duration-300 cursor-pointer ${
+                      className={`w-full text-left rounded-2xl border border-red-500 px-5 py-4 transition-all duration-300 cursor-pointer ${
                         isActive
                           ? "border-accent/30 bg-accent/[0.06] shadow-[0_0_30px_-10px_hsl(var(--accent)/0.15)]"
-                          : "border-foreground/[0.08] bg-foreground/[0.02] hover:border-foreground/[0.15]"
+                          : "border-white/[0.08] bg-white/[0.02] hover:border-white/[0.15]"
                       }`}
                       layout
                     >
                       <div className="flex items-center gap-3">
                         <motion.div
-                          className={`w-2 h-2 rounded-full shrink-0 ${
+                          className={`w-2 h-2 rounded-full border border-red-500 shrink-0 ${
                             isActive ? "bg-accent" : "bg-muted-foreground/30"
                           }`}
                           animate={isActive ? { scale: [1, 1.4, 1] } : {}}
                           transition={{ duration: 0.5 }}
                         />
                         <span
-                          className={`text-sm font-medium tracking-wide ${
+                          className={`text-lg font-extrabold tracking-wide ${
                             isActive ? "text-accent" : "text-muted-foreground"
                           }`}
                         >
@@ -190,7 +165,7 @@ const AboutSection = () => {
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                            className="text-muted-foreground text-sm leading-relaxed mt-3 ml-5 overflow-hidden"
+                            className=" text-md leading-relaxed mt-3 ml-5 overflow-hidden"
                           >
                             {c.description}
                           </motion.p>
@@ -203,13 +178,12 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* RIGHT — Luxury Tech Object with Parallax */}
+          {/* RIGHT — Luxury Tech Object */}
           <div className="lg:col-span-5 lg:col-start-8 relative">
             <motion.div
               whileHover={{ y: -6 }}
               transition={{ duration: 0.4 }}
-              style={{ y: imageParallaxY }}
-              className="relative rounded-3xl overflow-hidden border border-foreground/10 bg-background-secondary/20 backdrop-blur-xl shadow-2xl"
+              className="relative rounded-3xl overflow-hidden border border-white/10 bg-background-secondary/20 backdrop-blur-xl shadow-[0_40px_140px_-30px_rgba(0,0,0,0.5)]"
             >
               {/* Subtle inner glow */}
               <div className="absolute -inset-1 bg-gradient-to-tr from-accent/10 via-transparent to-transparent opacity-70 blur-2xl pointer-events-none" />
@@ -218,8 +192,7 @@ const AboutSection = () => {
                 <motion.img
                   src={holographicFluid}
                   alt=""
-                  style={{ y: innerParallaxY, scale: imageScale }}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                   loading="lazy"
                 />
 
@@ -232,7 +205,7 @@ const AboutSection = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -8 }}
                       transition={{ duration: 0.35 }}
-                      className="absolute bottom-6 left-6 right-6 bg-background/70 backdrop-blur-md rounded-xl border border-foreground/[0.1] px-5 py-4"
+                      className="absolute bottom-6 left-6 right-6 bg-background/70 backdrop-blur-md rounded-xl border border-white/[0.1] px-5 py-4"
                     >
                       <p className="text-accent text-xs tracking-[0.2em] uppercase mb-1">
                         {callouts[activeIndex].label}
@@ -246,7 +219,7 @@ const AboutSection = () => {
 
                 {/* Depth overlays */}
                 <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background/60" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-foreground/[0.05] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.05] via-transparent to-transparent" />
               </div>
             </motion.div>
           </div>
@@ -263,7 +236,7 @@ const AboutSection = () => {
                 className={`w-full text-left rounded-xl border px-4 py-3.5 transition-all duration-300 ${
                   isActive
                     ? "border-accent/30 bg-accent/[0.06]"
-                    : "border-foreground/[0.08] bg-foreground/[0.02]"
+                    : "border-white/[0.08] bg-white/[0.02]"
                 }`}
               >
                 <div className="flex items-center justify-between">

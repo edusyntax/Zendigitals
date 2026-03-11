@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import MagneticButton from "./MagneticButton";
 import { getLenis } from "./SmoothScroll";
 import LeadCaptureModal from "./LeadCaptureModal";
+import heroPoster from "@/assets/hero-object.jpg";
 
 const TYPING_TEXTS = [
   "We Build High-Converting Websites",
@@ -58,7 +59,7 @@ const HeroSection = () => {
   }, [tick]);
 
   return (
-    <section className="relative h-screen flex items-center overflow-hidden bg-background">
+    <section className="relative min-h-[620px] md:min-h-screen flex items-center overflow-hidden bg-background pt-24 md:pt-32  pb-2 md:pb-8">
       {/* Single background video */}
       <div className="absolute inset-0 z-0">
         <video
@@ -66,24 +67,29 @@ const HeroSection = () => {
           muted
           loop
           playsInline
+          preload="metadata"
           className="w-full h-full object-cover"
-          poster=""
+          poster={heroPoster}
+          aria-hidden="true"
         >
           <source src={HERO_VIDEO} type="video/mp4" />
         </video>
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px]" />
+        {/* Dark overlay for text readability while keeping video visible */}
+        <div className="absolute inset-0 bg-background/40 backdrop-brightness-110" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 site-container w-full">
-        <motion.div style={{ y: yOffset }} className="max-w-4xl">
+        <motion.div
+          style={{ y: yOffset }}
+          className="max-w-2xl md:max-w-3xl lg:max-w-4xl"
+        >
           {/* Overline */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-accent font-grotesk text-xs uppercase tracking-[0.3em] mb-4 sm:mb-6"
+            className="text-accent font-semibold font-grotesk text-xs uppercase tracking-[0.35em] mb-4 sm:mb-6 drop-shadow-md"
           >
             Digital Growth Partner
           </motion.p>
@@ -107,7 +113,7 @@ const HeroSection = () => {
           </div>
 
           {/* Subtext */}
-          <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-lg leading-relaxed font-light mb-6 sm:mb-8">
+          <p className="text-white/95 text-base sm:text-lg md:text-xl max-w-lg leading-relaxed font-medium mb-5 sm:mb-6">
             We help startups and brands grow using performance marketing, SEO, and AI-powered strategies.
           </p>
 

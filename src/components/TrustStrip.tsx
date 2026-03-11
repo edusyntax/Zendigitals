@@ -8,8 +8,8 @@ const companies = [
 ];
 
 const LogoItem = ({ name }: { name: string }) => (
-  <div className="flex items-center justify-center px-10 py-4 select-none" data-hover>
-    <span className="text-muted-foreground/40 font-grotesk text-sm md:text-base font-semibold tracking-[0.15em] uppercase whitespace-nowrap hover:text-muted-foreground/70 transition-colors duration-500">
+  <div className="flex items-center justify-center px-8 md:px-10 py-3 md:py-4 select-none" data-hover>
+    <span className="text-muted-foreground/60 font-grotesk text-xs md:text-sm lg:text-base font-semibold tracking-[0.15em] uppercase whitespace-nowrap hover:text-foreground transition-colors duration-300">
       {name}
     </span>
   </div>
@@ -17,14 +17,16 @@ const LogoItem = ({ name }: { name: string }) => (
 
 const TrustStrip = () => {
   return (
-    <section className="relative py-6 md:py-8md:py-8 overflow-hidden">
-      <ScrollReveal>
-        <p className="text-center text-muted-foreground/50 text-xs font-grotesk uppercase tracking-[0.4em] mb-10">
-          Trusted by industry leaders
-        </p>
-      </ScrollReveal>
+    <section className="relative py-8 md:py-8 overflow-hidden">
+      <div className="site-container">
+        <ScrollReveal>
+          <p className="text-center text-muted-foreground text-[0.7rem] md:text-xs font-grotesk font-semibold uppercase tracking-[0.3em] mb-8">
+            Trusted by industry leaders
+          </p>
+        </ScrollReveal>
+      </div>
 
-      <div className="relative group">
+      <div className="relative group site-container">
         {/* Fade masks */}
         <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
@@ -50,7 +52,9 @@ const TrustStrip = () => {
         </div>
       </div>
 
-      <div className="section-divi8r mt-16" />
+      <div className="site-container mt-10 md:mt-12">
+        <div className="section-divider" />
+      </div>
     </section>
   );
 };

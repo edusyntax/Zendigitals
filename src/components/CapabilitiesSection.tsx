@@ -62,7 +62,7 @@ const CapabilitiesSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="services" className="relative py-16 md:py-20 site-container">
+    <section id="services" className="relative py-6 md:py-12 site-container">
       <ScrollReveal>
         <p className="text-accent font-grotesk text-sm uppercase tracking-[0.3em] mb-4">
           What We Do
