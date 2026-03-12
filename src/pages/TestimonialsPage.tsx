@@ -5,6 +5,7 @@ import SectionTransition from "@/components/SectionTransition";
 import TiltCard from "@/components/TiltCard";
 import UrgencyCTA from "@/components/UrgencyCTA";
 import SEOHead from "@/components/SEOHead";
+import HoverFlexSection from "@/components/ui/Faq";
 
 const testimonials = [
   { quote: "Zendigitalz didn't just build our platform — they engineered our market position. Revenue up 340% in 8 months.", name: "Alexei Volkov", role: "CEO", company: "Nebula Finance" },
@@ -68,37 +69,7 @@ const TestimonialsPage = () => (
     </SectionTransition>
 
     <SectionTransition>
-      <section className="py-20 site-container">
-        <ScrollReveal>
-          <p className="text-accent font-grotesk text-xs uppercase tracking-[0.3em] mb-4">Client Stories</p>
-          <h2 className="editorial-heading text-[clamp(1.8rem,4vw,3.5rem)] text-foreground mb-16 max-w-2xl">
-            What our clients <span className="font-serif italic text-gradient-accent">say</span>
-          </h2>
-        </ScrollReveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {testimonials.map((t, i) => (
-            <ScrollReveal key={t.name} delay={i * 0.06}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-8 h-full flex flex-col group border border-foreground/[0.12] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.03] via-transparent to-transparent pointer-events-none rounded-2xl" />
-                  <span className="absolute top-4 left-6 text-[80px] leading-none font-serif text-accent/[0.06] pointer-events-none select-none">"</span>
-                  <p className="text-foreground text-lg md:text-xl leading-relaxed mb-6 flex-1 font-light relative z-10">"{t.quote}"</p>
-                  <div className="flex items-center gap-4 relative z-10">
-                    <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-                      <span className="text-accent font-grotesk text-sm font-bold">{t.name[0]}</span>
-                    </div>
-                    <div>
-                      <p className="text-foreground font-grotesk font-semibold text-sm">{t.name}</p>
-                      <p className="text-muted-foreground text-xs">{t.role}, {t.company}</p>
-                    </div>
-                  </div>
-                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-1/2 h-px bg-accent/0 group-hover:bg-accent/40 blur-sm transition-all duration-500" />
-                </div>
-              </TiltCard>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
+   <HoverFlexSection/>
     </SectionTransition>
 
     <SectionTransition>

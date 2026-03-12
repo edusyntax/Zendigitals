@@ -1,113 +1,179 @@
-import ScrollReveal from "./ScrollReveal";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
-const testimonials = [
+const items = [
   {
-    logo: "hulu",
-    rating: "4.9",
-    quote:
-      "The progress tracker is fantastic. It’s motivating to see how much I've improved over time.",
-    name: "Kate Davis",
-    username: "frable_captain_8",
+    id: "01",
+    title: "Joy of Traveling",
+    description:
+      "Discover the emotional richness that comes from immersive journeys and cultural exploration.",
+    image: "https://picsum.photos/500/700?1",
   },
   {
-    logo: "HBO max",
-    rating: "3.2",
-    quote:
-      "The app has a great mix of usability and performance. A seamless experience overall.",
-    name: "Martin Kazlauskas",
-    username: "sartorial_statue_59",
+    id: "02",
+    title: "Purposeful Journey",
+    description:
+      "Every trip can teach something new. When we travel with purpose, every step feels meaningful and alive.",
+    image: "https://picsum.photos/500/700?2",
   },
   {
-    logo: "Disney+",
-    rating: "4.9",
-    quote:
-      "Consistent execution, intuitive design, and measurable improvement in engagement.",
-    name: "Sanjay Sharma",
-    username: "voracious_rainbows_68",
+    id: "03",
+    title: "Smart Trip Planning",
+    description:
+      "Structure your adventures with clarity and intention for maximum impact.",
+    image: "https://picsum.photos/500/700?3",
   },
   {
-    logo: "STARZ",
-    rating: "3.2",
-    quote:
-      "A well-balanced system built with long-term scalability in mind.",
-    name: "Tawanna Afumba",
-    username: "intrinsigent_joelam_15",
+    id: "04",
+    title: "Memories Beyond Photos",
+    description:
+      "Moments that go deeper than documentation — they transform perspective.",
+    image: "https://picsum.photos/500/700?4",
   },
   {
-    logo: "VIX",
-    rating: "4.9",
-    quote:
-      "Thoughtful architecture and premium execution across every detail.",
-    name: "Larry King",
-    username: "pendulous_unicorn_46",
-  },
-  {
-    logo: "prime video",
-    rating: "3.2",
-    quote:
-      "Precision-driven development with measurable impact.",
-    name: "Fatima Mohamed",
-    username: "salubrious_artist_72",
+    id: "05",
+    title: "Budget Adventures",
+    description:
+      "Extraordinary experiences don’t require extraordinary budgets.",
+    image: "https://picsum.photos/500/700?5",
   },
 ];
 
-const TestimonialsSection = () => {
+const HoverFlexSection = () => {
+  const [active, setActive] = useState<number | null>(1);
+
   return (
-    <section className="py-16 md:py-24">
+    <section className="relative py-6 md:py-12 overflow-hidden">
       <div className="site-container">
-        {/* Header */}
+
+        {/* Heading */}
         <ScrollReveal>
-          <h2 className="editorial-heading text-[clamp(2rem,4vw,3rem)] text-center text-foreground">
-            Our trusted{" "}
-            <span className=" bg-[#FF6A3D] text-accent-foreground px-2 py-1 rounded-sm">
-              clients
+          <p className="text-xs tracking-[0.4em] uppercase text-accent mb-2">
+            Frequently{" "}
+            <span className="bg-[#FF6A3D] text-white px-2 py-2 rounded-md">
+              Asked
+            </span>
+          </p>
+
+          <h2 className="text-[clamp(2.4rem,4vw,3.2rem)] leading-tight font-bold tracking-tight text-foreground max-w-2xl mb-12">
+            Clear answers.{" "}
+            <span className="font-serif text-gradient-accent">
+              No noise.
             </span>
           </h2>
-          <p className="text-center text-muted-foreground mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-            Our mission is to drive progress and enhance the lives of our customers by
-            delivering superior products and services that exceed expectations.
-          </p>
         </ScrollReveal>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-          {testimonials.map((t, i) => (
-            <ScrollReveal key={t.username} delay={i * 0.05}>
-              <article
-                className="bg-card rounded-2xl p-6 h-[220px] flex flex-col justify-between shadow-sm border border-border transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg/40"
+        {/* FAQ List */}
+        <div className="space-y-8">
+
+          {items.map((item, index) => {
+            const isActive = active === index;
+
+            return (
+              <motion.div
+                key={item.id}
+                onMouseEnter={() => setActive(index)}
+                className="relative border border-border cursor-pointer rounded-xl overflow-visible bg-card"
+                animate={{
+                  backgroundColor: isActive
+                    ? "hsl(var(--accent) / 0.08)"
+                    : "hsl(var(--card))",
+                  scale: isActive ? 1.02 : 1,
+                }}
+                transition={{ duration: 0.25 }}
               >
-                {/* Top */}
-                <div>
-                  <div className="flex justify-between items-center mb-4">
-                    <span className="font-grotesk font-semibold text-sm capitalize text-card-foreground">
-                      {t.logo}
-                    </span>
-                    <span className="text-xs font-medium text-accent flex items-center gap-1">
-                      {t.rating}
-                      <span aria-hidden="true">★</span>
-                    </span>
+
+                {/* Floating Image */}
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.img
+                      key={item.image}
+                      src={item.image}
+                      initial={{ opacity: 0, scale: 0.85, rotate: -6, x: 20 }}
+                      animate={{ opacity: 1, scale: 1, rotate: -6, x: 0 }}
+                      exit={{ opacity: 0, scale: 0.85, rotate: -6, x: 20 }}
+                      transition={{ duration: 0.35 }}
+                      className="
+                        hidden md:block
+                        absolute
+                        right-16
+                        top-1/2
+                        -translate-y-1/2
+                        w-32
+                        h-40
+                        object-cover
+                        rounded-xl
+                        shadow-xl
+                        pointer-events-none
+                        z-20
+                      "
+                    />
+                  )}
+                </AnimatePresence>
+
+                <div className="flex items-center justify-between py-6 px-8 md:py-8 md:px-10 gap-4">
+
+                  {/* LEFT CONTENT */}
+                  <div className="flex-1">
+                    <div className="flex items-start gap-6">
+
+                      <span className="font-mono text-2xl font-bold flex-shrink-0 text-accent">
+                        {item.id}
+                      </span>
+
+                      <div className="flex-1">
+
+                        <h3 className="text-2xl font-bold text-foreground">
+                          {item.title}
+                        </h3>
+
+                        <AnimatePresence>
+                          {isActive && (
+                            <motion.p
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="mt-3 text-sm leading-relaxed max-w-2xl overflow-hidden text-muted-foreground"
+                            >
+                              {item.description}
+                            </motion.p>
+                          )}
+                        </AnimatePresence>
+
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                    “{t.quote}”
-                  </p>
+
+                  {/* RIGHT SIDE */}
+                  <div className="flex items-center gap-4 md:gap-6 flex-shrink-0">
+
+                    <motion.div
+                      animate={{ rotate: isActive ? 45 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className={`w-10 h-10 flex items-center justify-center rounded-full border-2 transition-all ${
+                        isActive
+                          ? "border-accent/60 text-accent"
+                          : "border-border text-muted-foreground"
+                      }`}
+                    >
+                      <ArrowUpRight size={18} strokeWidth={2.5} />
+                    </motion.div>
+
+                  </div>
+
                 </div>
 
-                {/* Bottom */}
-                <div>
-                  <p className="text-sm font-semibold text-card-foreground">
-                    {t.name}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {t.username}
-                  </p>
-                </div>
-              </article>
-            </ScrollReveal>
-          ))}
+              </motion.div>
+            );
+          })}
+
         </div>
       </div>
     </section>
   );
 };
 
-export default TestimonialsSection;
+export default HoverFlexSection;

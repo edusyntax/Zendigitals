@@ -100,7 +100,7 @@ const Navigation = () => {
         style={{ position: "fixed", top: 24, left: 0, right: 0, zIndex: 1002 }}
       >
         <nav
-          className={`mx-auto w-[calc(100vw-2rem)] max-w-5xl rounded-full px-5 py-3 md:px-8 md:py-4 transition-all duration-500 overflow-visible ${
+          className={`mx-auto border  border-blue-200 w-[calc(100vw-2rem)] max-w-5xl rounded-full px-5 py-3 md:px-8 md:py-4 transition-all duration-500 overflow-visible ${
             scrolled ? "glass-strong" : "glass"
           }`}
         >
@@ -133,7 +133,7 @@ const Navigation = () => {
                         href={link.href}
                         onClick={(e) => handleNavClick(e, link.href)}
                         className={`relative text-[11px] font-medium tracking-wider uppercase transition-colors duration-300 group whitespace-nowrap inline-flex items-center gap-1 ${
-                          active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                          active ? "text-foreground" : "text-foreground hover:text-foreground"
                         }`}
                         data-hover
                       >
@@ -208,7 +208,7 @@ const Navigation = () => {
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
                     className={`relative text-[11px] font-medium tracking-wider uppercase transition-colors duration-300 group whitespace-nowrap ${
-                      active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                      active ? "text-foreground" : "text-foreground hover:text-foreground"
                     }`}
                     data-hover
                   >

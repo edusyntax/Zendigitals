@@ -17,7 +17,7 @@ const LogoItem = ({ name }: { name: string }) => (
 
 const TrustStrip = () => {
   return (
-    <section className="relative py-8 md:py-8 overflow-hidden">
+    <section className="relative py-4 md:py-6 overflow-hidden">
       <div className="site-container">
         <ScrollReveal>
           <p className="text-center text-muted-foreground text-[0.7rem] md:text-xs font-grotesk font-semibold uppercase tracking-[0.3em] mb-8">
@@ -28,8 +28,8 @@ const TrustStrip = () => {
 
       <div className="relative group site-container">
         {/* Fade masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0  z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0  z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
 
         <div className="flex overflow-hidden group-hover:[&>div]:animation-play-state-paused">
           <motion.div

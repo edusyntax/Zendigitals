@@ -40,12 +40,12 @@ const metrics = [
 
 const MetricsSection = () => {
   return (
-    <section className="relative py-16 md:py-20 site-container">
+    <section className="relative py-8 md:py-12   site-container ">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
         {metrics.map((m, i) => (
           <ScrollReveal key={m.label} delay={i * 0.1}>
             <div className="text-center md:text-left">
-              <div className="text-[clamp(2rem,6vw,5rem)] font-grotesk font-bold text-foreground editorial-heading">
+              <div className="text-[clamp(2rem,6vw,7rem)] font-grotesk font-bold text-foreground editorial-heading">
                 <AnimatedCounter target={m.value} suffix={m.suffix} />
               </div>
               <p className="text-muted-foreground text-sm mt-2 uppercase tracking-widest">{m.label}</p>

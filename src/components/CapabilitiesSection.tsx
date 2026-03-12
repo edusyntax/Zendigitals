@@ -1,7 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import TiltCard from "./TiltCard";
+import { motion } from "framer-motion";
+import { FaWhatsapp, FaPhone, FaPlus } from "react-icons/fa";
+import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
+
 import glassPrism from "@/assets/glass-prism.png";
+import bgcard from "@/assets/bgcard.png"
+import bgcard1 from "@/assets/bgcard-1.png"
 import chromeKnot from "@/assets/chrome-knot.png";
 import holographicFluid from "@/assets/holographic-fluid.png";
 import heroObject from "@/assets/hero-object.jpg";
@@ -10,123 +15,203 @@ import metalMonolith from "@/assets/metallic-monolith.png";
 const services = [
   {
     title: "Website Design",
-    micro: "Design & development",
-    description: "Stunning, conversion-focused websites that captivate visitors and drive measurable business results.",
-    image: heroObject,
-    tags: ["Custom Design", "Responsive", "Performance"],
+    description:
+      "Stunning, conversion-focused websites that captivate visitors and drive measurable business results.",
+    image: bgcard1,
     href: "/services/website-design",
   },
   {
     title: "SEO Services",
-    micro: "Organic dominance",
-    description: "Dominate search rankings with data-driven SEO strategies that drive sustainable organic traffic and revenue growth.",
-    image: chromeKnot,
-    tags: ["Technical SEO", "Content Strategy", "Link Building"],
+    description:
+      "Dominate search rankings with data-driven SEO strategies that drive sustainable organic traffic.",
+    image: bgcard1,
     href: "/services/seo-services",
   },
   {
     title: "Lead Generation",
-    micro: "Pipeline growth",
-    description: "High-converting lead generation campaigns that fill your pipeline with qualified prospects ready to buy.",
-    image: holographicFluid,
-    tags: ["Multi-Channel", "Lead Scoring", "Nurture"],
+    description:
+      "High-converting lead generation campaigns that fill your pipeline with qualified prospects.",
+    image: bgcard1,
     href: "/services/lead-generation-campaigns",
   },
   {
     title: "Social Media Marketing",
-    micro: "Brand amplification",
-    description: "Strategic social media management that builds engaged communities and converts followers into customers.",
-    image: glassPrism,
-    tags: ["Strategy", "Content", "Community"],
+    description:
+      "Strategic social media management that builds engaged communities.",
+    image: bgcard1,
     href: "/services/social-media-marketing",
   },
   {
     title: "PPC Services",
-    micro: "Paid acquisition",
-    description: "ROI-focused paid advertising across Google, Bing, and social platforms that scales revenue predictably.",
-    image: metalMonolith,
-    tags: ["Google Ads", "Social Ads", "Landing Pages"],
+    description:
+      "ROI-focused paid advertising campaigns across Google and social platforms.",
+    image: bgcard1,
     href: "/services/ppc-services",
   },
   {
     title: "AI Automation",
-    micro: "Intelligent systems",
-    description: "Custom AI integrations and workflow automation that scale marketing operations exponentially.",
-    image: heroObject,
-    tags: ["AI Workflows", "Personalization", "Automation"],
+    description:
+      "Custom AI integrations and workflow automation that scale marketing operations.",
+    image: bgcard1,
     href: "/services/ai-automation",
   },
 ];
 
 const CapabilitiesSection = () => {
   const navigate = useNavigate();
+  const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section id="services" className="relative py-6 md:py-12 site-container">
-      <ScrollReveal>
+    <section id="services" className="py-6 md:py-4 site-container">
+
+    <ScrollReveal>
         <p className="text-accent font-grotesk text-sm uppercase tracking-[0.3em] mb-4">
-          What We Do
+          What<span className="bg-[#FF6A3D] text-white px-2 py-1 rounded-md">We Do</span> 
         </p>
         <h2 className="editorial-heading text-[clamp(2rem,5vw,4.5rem)] text-foreground mb-12 md:mb-16 max-w-3xl">
           Services built for{" "}
           <span className="font-serif italic text-gradient-accent">
             exceptional
-          </span>{" "}
+          </span> {" "}
           outcomes
         </h2>
       </ScrollReveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {services.map((svc, i) => (
-          <ScrollReveal key={svc.title} delay={i * 0.08}>
-            <TiltCard className="h-full">
-              <div
-                className="glass rounded-2xl p-5 md:p-6 h-[300px] md:h-[310px] flex flex-col group border border-foreground/[0.12] relative overflow-hidden cursor-pointer"
-                onClick={() => navigate(svc.href)}
-                role="link"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === "Enter" && navigate(svc.href)}
-              >
-                {/* Inner reflection */}
-                <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent pointer-events-none rounded-2xl" />
-                {/* Hover glow */}
-                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-2/3 h-1 bg-accent/0 group-hover:bg-accent/30 blur-lg transition-all duration-500 pointer-events-none" />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="relative w-full h-20 mb-4 rounded-lg overflow-hidden bg-background-secondary/50 flex-shrink-0">
-                    <img
-                      src={svc.image}
-                      alt={svc.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent" />
-                  </div>
-                  <p className="text-accent text-xs font-grotesk uppercase tracking-widest mb-1.5">
-                    {svc.micro}
-                  </p>
-                  <h3 className="text-foreground text-lg md:text-xl font-grotesk font-bold mb-2">
-                    {svc.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1 line-clamp-3">
-                    {svc.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {svc.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="glass text-xs text-muted-foreground px-3 py-1 rounded-full border border-foreground/[0.08]"
+        {services.map((svc, i) => {
+
+          const number = String(i + 1).padStart(2, "0");
+
+          const [pos, setPos] = useState({ x: 0, y: 0 });
+
+          const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+            setPos({ x, y });
+          };
+
+          return (
+            <motion.div
+              key={svc.title}
+              onClick={() => navigate(svc.href)}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={() => setPos({ x: 0, y: 0 })}
+              className="relative h-[360px] rounded-2xl overflow-hidden cursor-pointer group"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.08 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8 }}
+            >
+
+              {/* Image with Inner Zoom + Parallax */}
+              <motion.img
+                src={svc.image}
+                alt={svc.title}
+                className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:brightness-110"
+                animate={{
+                  scale: 1.15,
+                  x: pos.x * -30,
+                  y: pos.y * -30
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 20
+                }}
+              />
+
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"/>
+
+              {/* Ghost Number */}
+              <span className="absolute top-6 right-6 text-[90px] font-bold text-white/10 select-none">
+                {number}
+              </span>
+
+              {/* Content */}
+              <div className="absolute inset-0 p-6 flex flex-col justify-end z-10">
+
+                <h3 className="text-white text-2xl font-bold mb-2">
+                  {svc.title}
+                </h3>
+
+                <p className="text-white/80 text-sm leading-relaxed mb-5 max-w-xs">
+                  {svc.description}
+                </p>
+
+                {/* Bottom Actions */}
+                <div className="flex items-center justify-between">
+
+                  {/* Explore Button */}
+                  <button
+                    className="flex items-center gap-2 text-white text-sm font-medium px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20  hover:border-accent transition"
+                  >
+                    Explore
+                    <motion.span
+                      whileHover={{ x: 4 }}
+                      className="text-white"
+                    >
+                      →
+                    </motion.span>
+                  </button>
+
+                  {/* Expandable Actions */}
+                  <div className="flex items-center gap-2">
+
+                    {active === i && (
+                      <motion.div
+                        className="flex items-center gap-2"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
                       >
-                        {tag}
-                      </span>
-                    ))}
+                        <a
+                          href="https://wa.me/919999999999"
+                          onClick={(e) => e.stopPropagation()}
+                          className="w-9 h-9 rounded-full bg-green-500 flex items-center justify-center text-white"
+                        >
+                          <FaWhatsapp />
+                        </a>
+
+                        <a
+                          href="tel:+919999999999"
+                          onClick={(e) => e.stopPropagation()}
+                          className="w-9 h-9 rounded-full bg-accent flex items-center justify-center text-white"
+                        >
+                          <FaPhone />
+                        </a>
+                      </motion.div>
+                    )}
+
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActive(active === i ? null : i);
+                      }}
+                      className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition"
+                    >
+                      <FaPlus />
+                    </button>
+
                   </div>
+
                 </div>
+
               </div>
-            </TiltCard>
-          </ScrollReveal>
-        ))}
+
+              {/* Glow */}
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-2/3 h-2 bg-accent/0 group-hover:bg-accent/40 blur-lg transition-all duration-500"/>
+
+            </motion.div>
+          );
+
+        })}
       </div>
+
     </section>
   );
 };

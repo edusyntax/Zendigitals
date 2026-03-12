@@ -14,7 +14,7 @@ import LeadGeneration from "./pages/services/LeadGeneration";
 import SocialMediaMarketing from "./pages/services/SocialMediaMarketing";
 import PPCServices from "./pages/services/PPCServices";
 import AIAutomation from "./pages/services/AIAutomation";
-import TestimonialsPage from "./pages/TestimonialsPage";
+
 import BlogPage from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
 import ContactPage from "./pages/Contact";
@@ -33,6 +33,8 @@ import MediaLibrary from "./pages/admin/MediaLibrary";
 import Authors from "./pages/admin/Authors";
 import Leads from "./pages/admin/Leads";
 import LeadDetail from "./pages/admin/LeadDetail";
+import HoverFlexSection from "../src/components/ui/Faq"
+import TestimonialsPage from "./pages/TestimonialsPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {

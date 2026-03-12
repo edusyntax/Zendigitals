@@ -219,12 +219,17 @@ const BlogSection = () => {
       className="relative py-6 md:py-12 px-6 md:px-16 lg:px-24"
     >
       <ScrollReveal>
-        <p className="text-accent text-xs uppercase tracking-[0.25em] mb-3">
-          Strategic  <span className="bg-[#FF6A3D] text-white px-2 py-2 rounded-md">Intelligence</span> 
-        </p>
-        <h2 className="text-[clamp(2.2rem,4vw,3.8rem)] font-semibold text-foreground max-w-2xl mb-14">
-          Insights shaping digital authority
-        </h2>
+<p className="text-xs tracking-[0.4em] uppercase text-accent mb-2">
+  Strategic{" "}
+  <span className="bg-[#FF6A3D] text-white px-2 py-2 rounded-md">
+    Intelligence
+  </span>
+</p>
+
+<h2 className="text-[clamp(2.4rem,4vw,3.2rem)] mb-2 leading-tight font-bold tracking-tight text-foreground max-w-2xl">
+  Insights shaping digital{" "}
+  <span className="font-serif text-gradient-accent">authority</span>
+</h2>
       </ScrollReveal>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

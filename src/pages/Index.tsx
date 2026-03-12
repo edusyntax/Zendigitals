@@ -9,7 +9,6 @@ import CapabilitiesSection from "@/components/CapabilitiesSection";
 import AboutSection from "@/components/AboutSection";
 import Faq from "@/components/ui/Faq";
 import HowItWorks from "@/components/HowItWorks";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import MetricsSection from "@/components/MetricsSection";
 import FullscreenCTA from "@/components/FullscreenCTA";
 import Footer from "@/components/Footer";
@@ -20,7 +19,7 @@ import PageTransition from "@/components/PageTransition";
 import SectionTransition from "@/components/SectionTransition";
 import SEOHead, { organizationJsonLd } from "@/components/SEOHead";
 
-const LazyTestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
+
 const LazyBlogPage = lazy(() => import("./Blog"));
 
 const Index = () => {
@@ -50,11 +49,6 @@ const Index = () => {
             <SectionTransition><AboutSection /></SectionTransition>
             <SectionTransition><MetricsSection /></SectionTransition>
             <SectionTransition><HowItWorks /></SectionTransition>
-            <Suspense fallback={null}>
-              <SectionTransition>
-                <LazyTestimonialsSection />
-              </SectionTransition>
-            </Suspense>
             <Suspense fallback={null}>
               <LazyBlogPage />
             </Suspense>
