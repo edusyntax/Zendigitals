@@ -18,8 +18,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import PageTransition from "@/components/PageTransition";
 import SectionTransition from "@/components/SectionTransition";
 import SEOHead, { organizationJsonLd } from "@/components/SEOHead";
-
-
+import TestimonialsSection from "@/components/TestimonialsSection";
 const LazyBlogPage = lazy(() => import("./Blog"));
 
 const Index = () => {
@@ -49,6 +48,7 @@ const Index = () => {
             <SectionTransition><AboutSection /></SectionTransition>
             <SectionTransition><MetricsSection /></SectionTransition>
             <SectionTransition><HowItWorks /></SectionTransition>
+            <SectionTransition><TestimonialsSection /></SectionTransition>
             <Suspense fallback={null}>
               <LazyBlogPage />
             </Suspense>
