@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import holographicFluid from "@/assets/holographic-fluid.png";
+import holographicFluid from "@/assets/aboutus.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const callouts = [
@@ -25,7 +25,6 @@ const callouts = [
   },
 ];
 
-/* ── curved arrow paths (desktop only) ── */
 const arrowPaths = [
   "M 0,0 C 40,-30 80,-20 120,10",
   "M 0,0 C 50,20 100,30 140,5",
@@ -39,21 +38,6 @@ const AboutSection = () => {
   const isMobile = useIsMobile();
   const autoTriggered = useRef(false);
 
-  /* scroll-driven parallax for the image block */
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const imageParallaxY = useTransform(scrollYProgress, [0, 1], [60, -60]);
-  const innerParallaxY = useTransform(scrollYProgress, [0, 1], [-30, 30]);
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.08, 1, 1.03]);
-
-  const words =
-    "We design digital leverage. We don't follow trends — we architect systems that set them. Every brand we touch becomes undeniable.".split(
-      " "
-    );
-
-  /* auto-trigger first callout on viewport entry */
   useEffect(() => {
     if (isInView && !autoTriggered.current) {
       autoTriggered.current = true;
@@ -71,58 +55,51 @@ const AboutSection = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="relative py-16 md:py-20 site-container overflow-hidden"
+      className="relative py-6 site-container"
     >
-      {/* Background Accent Glow */}
+      {/* Background Glow */}
       <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="relative max-w-6xl mx-auto">
+      {/* FIXED CONTAINER */}
+      <div className="relative max-w-6xl">
+
         {/* Section Label */}
         <ScrollReveal>
-          <p className="text-xs tracking-[0.4em] uppercase text-accent mb-16">
-            About Zendigitalz
+          <p className="text-xs tracking-[0.4em] uppercase text-accent mb-2">
+            About{" "}
+            <span className="bg-[#FF6A3D] text-white px-2 py-2 rounded-md">
+              Zendigitalz
+            </span>
           </p>
         </ScrollReveal>
 
         <div className="grid lg:grid-cols-12 gap-16 items-center">
-          {/* LEFT — Editorial Authority */}
+
+          {/* LEFT SIDE */}
           <div className="lg:col-span-6">
-            <h2 className="text-[clamp(2rem,3.5vw,3rem)] leading-[1.3] font-light tracking-tight text-foreground max-w-2xl">
-              {words.map((word, i) => (
-                <motion.span
-                  key={i}
-                  className={`inline-block mr-[0.35em] ${i < 3 ? "font-semibold" : ""}`}
-                  initial={{ opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.45,
-                    delay: i * 0.02,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                >
-                  {word}
-                </motion.span>
-              ))}
+
+            <h2 className="text-[clamp(2.4rem,3vw,3.2rem)] leading-tight font-light tracking-tight text-foreground max-w-2xl">
+              We don’t build campaigns. We engineer{" "}
+              <span className="font-medium text-accent">systems.</span>
             </h2>
 
-            <div className="mt-10 border-l border-border pl-6">
-              <p className="text-muted-foreground text-lg leading-relaxed max-w-lg">
-                We operate at the intersection of strategic brand positioning
-                and technical execution. Every engagement is engineered as a
-                scalable digital command center — built for dominance.
-              </p>
-            </div>
+            <p className="text-muted-foreground/80 text-base leading-relaxed max-w-md mt-4">
+              Every engagement becomes a structured digital command center —
+              built to scale authority, narrative, and conversion.
+            </p>
 
-            {/* ── CALLOUTS — Desktop / Tablet (inline below manifesto) ── */}
-            <div className="hidden md:flex flex-col gap-4 mt-12 relative">
+            {/* CALLOUTS DESKTOP */}
+            <div className="hidden md:flex flex-col gap-4 mt-10 relative">
+
               {callouts.map((c, i) => {
                 const isActive = activeIndex === i;
+
                 return (
                   <div key={c.id} className="relative flex items-start gap-4">
-                    {/* SVG arrow (desktop only, lg+) */}
+
+                    {/* SVG ARROW */}
                     <svg
-                      className="hidden lg:block absolute -right-[160px] top-2 w-[150px] h-[60px] pointer-events-none"
+                      className="hidden lg:block absolute -right-[160px] top-2 w-[150px] h-[60px]"
                       viewBox="-5 -40 155 100"
                       fill="none"
                     >
@@ -137,9 +114,9 @@ const AboutSection = () => {
                             ? { pathLength: 1, opacity: 0.7 }
                             : { pathLength: 0, opacity: 0 }
                         }
-                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        transition={{ duration: 0.6 }}
                       />
-                      {/* arrowhead dot */}
+
                       <motion.circle
                         cx={i === 0 ? 120 : i === 1 ? 140 : 130}
                         cy={i === 0 ? 10 : i === 1 ? 5 : 20}
@@ -155,32 +132,37 @@ const AboutSection = () => {
                       />
                     </svg>
 
-                    {/* Callout card */}
+                    {/* CALLOUT CARD */}
                     <motion.button
                       onMouseEnter={() => !isMobile && setActiveIndex(i)}
                       onClick={() => handleActivate(i)}
-                      className={`w-full text-left rounded-2xl border px-5 py-4 transition-all duration-300 cursor-pointer ${
-                        isActive
-                          ? "border-accent/30 bg-accent/[0.06] shadow-[0_0_30px_-10px_hsl(var(--accent)/0.15)]"
-                          : "border-foreground/[0.08] bg-foreground/[0.02] hover:border-foreground/[0.15]"
-                      }`}
+                    className={`w-full text-left rounded-2xl border px-5 py-4 transition-all duration-300 cursor-pointer ${
+  isActive
+    ? "border-accent/40 bg-accent/[0.06] shadow-[0_0_30px_-10px_hsl(var(--accent)/0.2)]"
+    : "border-white/15 bg-white/[0.02] hover:border-white/30"
+}`}
                       layout
                     >
                       <div className="flex items-center gap-3">
+
                         <motion.div
-                          className={`w-2 h-2 rounded-full shrink-0 ${
+                          className={`w-2 h-2 rounded-full ${
                             isActive ? "bg-accent" : "bg-muted-foreground/30"
                           }`}
                           animate={isActive ? { scale: [1, 1.4, 1] } : {}}
                           transition={{ duration: 0.5 }}
                         />
+
                         <span
-                          className={`text-sm font-medium tracking-wide ${
-                            isActive ? "text-accent" : "text-muted-foreground"
+                          className={`text-lg font-semibold ${
+                            isActive
+                              ? "text-accent"
+                              : "text-muted-foreground"
                           }`}
                         >
                           {c.label}
                         </span>
+
                       </div>
 
                       <AnimatePresence>
@@ -189,105 +171,105 @@ const AboutSection = () => {
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                            className="text-muted-foreground text-sm leading-relaxed mt-3 ml-5 overflow-hidden"
+                            transition={{ duration: 0.35 }}
+                            className="text-sm mt-3 ml-5"
                           >
                             {c.description}
                           </motion.p>
                         )}
                       </AnimatePresence>
+
                     </motion.button>
+
                   </div>
                 );
               })}
             </div>
           </div>
 
-          {/* RIGHT — Luxury Tech Object with Parallax */}
-          <div className="lg:col-span-5 lg:col-start-8 relative">
+          {/* RIGHT IMAGE */}
+          <div className="lg:col-span-5 lg:col-start-8">
+
             <motion.div
               whileHover={{ y: -6 }}
               transition={{ duration: 0.4 }}
-              style={{ y: imageParallaxY }}
-              className="relative rounded-3xl overflow-hidden border border-foreground/10 bg-background-secondary/20 backdrop-blur-xl shadow-2xl"
+              className="relative rounded-3xl overflow-hidden border border-white/10"
             >
-              {/* Subtle inner glow */}
-              <div className="absolute -inset-1 bg-gradient-to-tr from-accent/10 via-transparent to-transparent opacity-70 blur-2xl pointer-events-none" />
 
               <div className="relative aspect-[4/5] overflow-hidden">
+
                 <motion.img
                   src={holographicFluid}
                   alt=""
-                  style={{ y: innerParallaxY, scale: imageScale }}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
 
-                {/* Active callout label overlay on image */}
                 <AnimatePresence>
                   {activeIndex !== null && (
                     <motion.div
                       key={activeIndex}
                       initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.35 }}
-                      className="absolute bottom-6 left-6 right-6 bg-background/70 backdrop-blur-md rounded-xl border border-foreground/[0.1] px-5 py-4"
+                      exit={{ opacity: 0 }}
+                      className="absolute bottom-6 left-6 right-6 bg-background/70 backdrop-blur-md rounded-xl px-5 py-4"
                     >
-                      <p className="text-accent text-xs tracking-[0.2em] uppercase mb-1">
+                      <p className="text-accent text-xs uppercase mb-1">
                         {callouts[activeIndex].label}
                       </p>
-                      <p className="text-foreground/80 text-sm leading-relaxed">
+
+                      <p className="text-foreground/80 text-sm">
                         {callouts[activeIndex].description}
                       </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
 
-                {/* Depth overlays */}
-                <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background/60" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-foreground/[0.05] via-transparent to-transparent" />
               </div>
+
             </motion.div>
+
           </div>
         </div>
 
-        {/* ── CALLOUTS — Mobile (stacked accordion) ── */}
+        {/* MOBILE CALLOUTS */}
         <div className="md:hidden mt-10 flex flex-col gap-3">
+
           {callouts.map((c, i) => {
             const isActive = activeIndex === i;
+
             return (
               <motion.button
                 key={c.id}
                 onClick={() => handleActivate(i)}
-                className={`w-full text-left rounded-xl border px-4 py-3.5 transition-all duration-300 ${
+                className={`w-full text-left rounded-xl px-4 py-3 ${
                   isActive
-                    ? "border-accent/30 bg-accent/[0.06]"
-                    : "border-foreground/[0.08] bg-foreground/[0.02]"
+                    ? "border-accent/50 bg-accent/[0.06]"
+                    : "border-white/[0.9] bg-white/[0.02]"
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
+
+                  <div className="flex items-center gap-2">
+
                     <div
                       className={`w-1.5 h-1.5 rounded-full ${
-                        isActive ? "bg-accent" : "bg-muted-foreground/30"
+                        isActive
+                          ? "bg-accent"
+                          : "bg-muted-foreground/30"
                       }`}
                     />
-                    <span
-                      className={`text-sm font-medium ${
-                        isActive ? "text-accent" : "text-muted-foreground"
-                      }`}
-                    >
-                      {c.label}
-                    </span>
+
+                    <span className="text-sm">{c.label}</span>
+
                   </div>
+
                   <motion.span
                     animate={{ rotate: isActive ? 180 : 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="text-muted-foreground text-xs"
+                    className="text-xs"
                   >
                     ▾
                   </motion.span>
+
                 </div>
 
                 <AnimatePresence>
@@ -296,17 +278,18 @@ const AboutSection = () => {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                      className="text-muted-foreground text-sm leading-relaxed mt-2.5 overflow-hidden"
+                      className="text-sm mt-2"
                     >
                       {c.description}
                     </motion.p>
                   )}
                 </AnimatePresence>
+
               </motion.button>
             );
           })}
         </div>
+
       </div>
     </section>
   );

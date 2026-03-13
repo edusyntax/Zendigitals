@@ -149,15 +149,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <motion.button
-        onClick={scrollToTop}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="fixed bottom-6 right-6 z-50 glass w-10 h-10 rounded-full flex items-center justify-center text-foreground hover:bg-accent/10 transition-colors text-sm"
-        data-hover
-      >
-        ↑
-      </motion.button>
+  
     </footer>
   );
 };

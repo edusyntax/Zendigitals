@@ -1,87 +1,222 @@
-import { motion } from "framer-motion";
-import ScrollReveal from "./ScrollReveal";
+import { useRef, useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const steps = [
+/* ===========================
+   DATA
+=========================== */
+
+const milestones = [
   {
-    num: "01",
+    image: "https://picsum.photos/500/600?1",
     title: "Discover",
-    description: "Deep-dive audit into your brand, market position, competitors, and growth architecture.",
+    caption: "Clarity before execution.",
+    flipText: "We audited acquisition channels and infrastructure.",
   },
   {
-    num: "02",
+    image: "https://picsum.photos/500/600?2",
     title: "Architect",
-    description: "Strategic blueprint mapping goals to systems — no guesswork, pure engineering.",
+    caption: "System blueprint defined.",
+    flipText: "Defined leverage layers and automation structure.",
   },
   {
-    num: "03",
+    image: "https://picsum.photos/500/600?3",
     title: "Design",
-    description: "Pixel-perfect interfaces sculpted for conversion, clarity, and brand authority.",
+    caption: "Authority engineered.",
+    flipText: "Psychology-driven interface systems deployed.",
   },
   {
-    num: "04",
+    image: "https://picsum.photos/500/600?4",
     title: "Build",
-    description: "Performance-obsessed development. Scalable, secure, architecturally sound.",
-  },
-  {
-    num: "05",
-    title: "Optimize",
-    description: "Continuous iteration powered by data. We compound results, not just maintain them.",
+    caption: "Infrastructure scaled.",
+    flipText: "Secure, high-performance architecture.",
   },
 ];
 
-const HowItWorks = () => {
+const PolaroidTimeline = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const pinRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [ropePath, setRopePath] = useState("");
+  const [flipped, setFlipped] = useState<number | null>(null);
+  const [lightbox, setLightbox] = useState<number | null>(null);
+
+  const generatePath = () => {
+    if (!sectionRef.current) return;
+
+    const containerRect = sectionRef.current.getBoundingClientRect();
+
+    const points = pinRefs.current
+      .map((pin) => {
+        if (!pin) return null;
+        const rect = pin.getBoundingClientRect();
+        return {
+          x: rect.left + rect.width / 2 - containerRect.left,
+          y: rect.top + rect.height / 2 - containerRect.top,
+        };
+      })
+      .filter(Boolean) as { x: number; y: number }[];
+
+    if (points.length < 2) return;
+
+    let d = `M ${points[0].x} ${points[0].y}`;
+
+    for (let i = 1; i < points.length; i++) {
+      const prev = points[i - 1];
+      const curr = points[i];
+
+      const midX = (prev.x + curr.x) / 2;
+      const midY = Math.min(prev.y, curr.y) - 40;
+
+      d += ` Q ${midX} ${midY}, ${curr.x} ${curr.y}`;
+    }
+
+    setRopePath(d);
+  };
+
+  useEffect(() => {
+    generatePath();
+    window.addEventListener("resize", generatePath);
+    return () => window.removeEventListener("resize", generatePath);
+  }, []);
+
   return (
-    <section id="process" className="relative py-16 md:py-20 site-container">
-      <div className="section-divider mb-20" />
+    <section
+      ref={sectionRef}
+      className="relative py-6 site-container"
+    >
+      {/* container aligned with About */}
+      <div className="relative max-w-6xl">
 
-      <ScrollReveal>
-        <p className="text-accent font-grotesk text-sm uppercase tracking-[0.3em] mb-4">Our Process</p>
-        <h2 className="editorial-heading text-[clamp(2rem,5vw,4.5rem)] text-foreground mb-16 max-w-3xl">
-          How We <span className="font-serif italic text-gradient-accent">Work</span>
+        {/* Section Heading */}
+        <p className="text-xs tracking-[0.4em] uppercase text-accent mb-2">
+          Operational{" "}
+          <span className="bg-[#FF6A3D] text-white px-2 py-2 rounded-md">
+            Framework
+          </span>
+        </p>
+
+        <h2 className="text-[clamp(2.4rem,4vw,3.2rem)] leading-tight font-bold tracking-tight text-foreground max-w-2xl">
+          The system behind{" "}
+          <span className="font-serif   text-gradient-accent">every</span> result
         </h2>
-      </ScrollReveal>
 
-      {/* Progress line */}
-      <div className="relative">
-        {/* Vertical line */}
-        <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-border" />
+        {/* ROPE */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none -z-10">
+          <motion.path
+            d={ropePath}
+            stroke="hsl(var(--accent))"
+            strokeWidth="2"
+            strokeDasharray="5 18"
+            strokeLinecap="round"
+            fill="none"
+            animate={{ strokeDashoffset: [0, -120] }}
+            transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+          />
+        </svg>
 
-        <div className="flex flex-col gap-12 md:gap-16">
-          {steps.map((step, i) => (
-            <ScrollReveal key={step.num} delay={i * 0.08}>
-              <div className="flex gap-8 md:gap-16 items-start group">
-                {/* Dot on line */}
-                <div className="relative flex-shrink-0">
-                  <motion.div
-                    className="w-8 h-8 md:w-16 md:h-16 rounded-full glass flex items-center justify-center relative z-10 border border-foreground/[0.12]"
-                    whileInView={{ scale: [0.8, 1.1, 1] }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
+        {/* CARDS */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+
+          {milestones.map((item, i) => {
+            const tilt = (i % 2 === 0 ? -1 : 1) * (8 + i * 2);
+
+            return (
+              <motion.div
+                key={i}
+                initial={{ y: 60, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ delay: i * 0.15 }}
+                className="relative"
+              >
+
+                {/* Tape */}
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-6 bg-accent/30 rotate-[-8deg] rounded-sm opacity-80" />
+
+                {/* Pin */}
+                <div
+                  ref={(el) => (pinRefs.current[i] = el)}
+                  onClick={() => setLightbox(i)}
+                  className="absolute -top-8 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-accent cursor-pointer"
+                />
+
+                {/* Polaroid */}
+                <motion.div
+                  onClick={() =>
+                    setFlipped(flipped === i ? null : i)
+                  }
+                  className="w-full max-w-[16rem] h-72 rounded-md border border-white/10 shadow-xl cursor-pointer relative mx-auto bg-background/40 backdrop-blur-sm"
+                  style={{
+                    rotate: tilt,
+                    transformStyle: "preserve-3d",
+                  }}
+                  animate={{
+                    rotateY: flipped === i ? 180 : 0,
+                  }}
+                  transition={{ duration: 0.8 }}
+                >
+
+                  {/* FRONT */}
+                  <div
+                    className="absolute inset-0 p-4"
+                    style={{ backfaceVisibility: "hidden" }}
                   >
-                    <span className="text-accent font-grotesk text-xs md:text-sm font-bold">{step.num}</span>
-                  </motion.div>
-                  {/* Glow */}
-                  <div className="absolute inset-0 rounded-full bg-accent/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </div>
+                    <img
+                      src={item.image}
+                      className="w-full h-48 object-cover rounded-sm"
+                    />
 
-                {/* Content */}
-                <div className="flex-1 pb-6">
-                  <h3 className="text-foreground text-2xl md:text-4xl font-grotesk font-bold mb-3 group-hover:text-accent transition-colors duration-300">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-xl">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
+                    <h3 className="mt-4 font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-sm text-muted-foreground">
+                      {item.caption}
+                    </p>
+                  </div>
+
+                  {/* BACK */}
+                  <div
+                    className="absolute inset-0 p-6 flex items-center justify-center text-center text-muted-foreground"
+                    style={{
+                      transform: "rotateY(180deg)",
+                      backfaceVisibility: "hidden",
+                    }}
+                  >
+                    {item.flipText}
+                  </div>
+                </motion.div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
-      <div className="section-divider mt-20" />
+      {/* LIGHTBOX */}
+      <AnimatePresence>
+        {lightbox !== null && (
+          <motion.div
+            className="fixed inset-0 flex items-center justify-center z-50 bg-background/90 backdrop-blur-md"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="relative">
+              <img
+                src={milestones[lightbox].image}
+                className="max-w-4xl max-h-[80vh]"
+              />
+
+              <button
+                onClick={() => setLightbox(null)}
+                className="absolute top-4 right-4 text-foreground text-3xl"
+              >
+                ✕
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
 
-export default HowItWorks;
+export default PolaroidTimeline;

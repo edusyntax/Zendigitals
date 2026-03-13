@@ -5,7 +5,6 @@ import BackgroundLayers from "@/components/BackgroundLayers";
 import CustomCursor from "@/components/CustomCursor";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import ThemeToggle from "@/components/ThemeToggle";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
 import PageTransition from "@/components/PageTransition";
@@ -33,7 +32,6 @@ const PageLayout = ({ children }: { children: React.ReactNode }) => {
           </SectionTransition>
         </main>
       </PageTransition>
-      <ThemeToggle />
     </SmoothScroll>
   );
 };

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import ScrollReveal from "@/components/ScrollReveal";
 
 const items = [
   {
@@ -45,28 +44,25 @@ const HoverFlexSection = () => {
   const [active, setActive] = useState<number | null>(1);
 
   return (
-    <section className="relative py-6 md:py-12 overflow-hidden">
+      <section className="relative py-6 md:py-12 overflow-hidden">
       <div className="site-container">
 
         {/* Heading */}
-        <ScrollReveal>
-          <p className="text-xs tracking-[0.4em] uppercase text-accent mb-2">
-            Frequently{" "}
-            <span className="bg-[#FF6A3D] text-white px-2 py-2 rounded-md">
-              Asked
-            </span>
-          </p>
+        <p className="text-accent text-xs uppercase tracking-[0.25em] mb-3">
+          Frequently{" "}
+          <span className="bg-[#FF6A3D] text-accent-foreground px-2 py-1 rounded-md">
+            Asked
+          </span>
+        </p>
 
-          <h2 className="text-[clamp(2.4rem,4vw,3.2rem)] leading-tight font-bold tracking-tight text-foreground max-w-2xl mb-12">
-            Clear answers.{" "}
-            <span className="font-serif text-gradient-accent">
-              No noise.
-            </span>
-          </h2>
-        </ScrollReveal>
+        <h2 className="editorial-heading text-[clamp(2.2rem,4vw,3.2rem)] font-semibold text-foreground max-w-3xl mb-10 md:mb-14">
+        Clear answers.{" "}
+     <span className="font-serif text-gradient-accent">
+            No noise.
+          </span>
+        </h2>
 
-        {/* FAQ List */}
-        <div className="space-y-8">
+        <div className="space-y-6">
 
           {items.map((item, index) => {
             const isActive = active === index;
@@ -91,16 +87,15 @@ const HoverFlexSection = () => {
                     <motion.img
                       key={item.image}
                       src={item.image}
-                      initial={{ opacity: 0, scale: 0.85, rotate: -6, x: 20 }}
-                      animate={{ opacity: 1, scale: 1, rotate: -6, x: 0 }}
-                      exit={{ opacity: 0, scale: 0.85, rotate: -6, x: 20 }}
+                      initial={{ opacity: 0, scale: 0.85, rotate: -6, y: -80,x:-50 }}
+                      animate={{ opacity: 1, scale: 1, rotate: -6, y:30 }}
+                      exit={{ opacity: 0, scale: 0.85, rotate: -6, y: 10 }}
                       transition={{ duration: 0.35 }}
                       className="
                         hidden md:block
                         absolute
                         right-16
-                        top-1/2
-                        -translate-y-1/2
+                        -top-20
                         w-32
                         h-40
                         object-cover
@@ -153,7 +148,7 @@ const HoverFlexSection = () => {
                     <motion.div
                       animate={{ rotate: isActive ? 45 : 0 }}
                       transition={{ duration: 0.3 }}
-                      className={`w-10 h-10 flex items-center justify-center rounded-full border-2 transition-all ${
+                      className={`w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full border-2 transition-all ${
                         isActive
                           ? "border-accent/60 text-accent"
                           : "border-border text-muted-foreground"

@@ -1,134 +1,138 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { FaChartLine,FaIdBadge, FaSearch, FaRobot } from "react-icons/fa";
+
 import MagneticButton from "./MagneticButton";
 import { getLenis } from "./SmoothScroll";
 import LeadCaptureModal from "./LeadCaptureModal";
 
-const TYPING_TEXTS = [
-  "We Build High-Converting Websites",
-  "We Drive Growth with SEO",
-  "We Generate High-Quality Leads",
-  "We Scale Brands with Social Media",
-  "We Optimize Campaigns with PPC",
-  "We Automate Marketing with AI",
+import heroPoster from "@/assets/hero-object.jpg";
+import { Medal } from "lucide-react";
+
+const KEYWORDS = [
+  "AI Automation",
+  "Digital Marketing",
+  "SEO",
+  "PPC Campaigns",
+  "Lead Generation",
 ];
 
-const TYPING_SPEED = 60;
-const DELETE_SPEED = 35;
-const PAUSE_DURATION = 2000;
-
-const HERO_VIDEO = "https://assets.mixkit.co/videos/4906/4906-720.mp4";
+const HERO_VIDEO = "https://assets.mixkit.co/videos/5744/5744-720.mp4";
 
 const HeroSection = () => {
-  const [displayText, setDisplayText] = useState("");
-  const [textIndex, setTextIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const [wordIndex, setWordIndex] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
 
   const { scrollY } = useScroll();
   const yOffset = useTransform(scrollY, [0, 400], [0, -60]);
 
-  const tick = useCallback(() => {
-    const fullText = TYPING_TEXTS[textIndex];
-
-    if (!isDeleting) {
-      const next = fullText.slice(0, displayText.length + 1);
-      setDisplayText(next);
-      if (next === fullText) {
-        timeoutRef.current = setTimeout(() => setIsDeleting(true), PAUSE_DURATION);
-        return;
-      }
-      timeoutRef.current = setTimeout(tick, TYPING_SPEED);
-    } else {
-      const next = fullText.slice(0, displayText.length - 1);
-      setDisplayText(next);
-      if (next === "") {
-        setIsDeleting(false);
-        setTextIndex((p) => (p + 1) % TYPING_TEXTS.length);
-        return;
-      }
-      timeoutRef.current = setTimeout(tick, DELETE_SPEED);
-    }
-  }, [displayText, isDeleting, textIndex]);
-
   useEffect(() => {
-    timeoutRef.current = setTimeout(tick, isDeleting ? DELETE_SPEED : TYPING_SPEED);
-    return () => clearTimeout(timeoutRef.current);
-  }, [tick]);
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % KEYWORDS.length);
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <section className="relative h-screen flex items-center overflow-hidden bg-background">
-      {/* Single background video */}
+    <section className="relative min-h-[680px] md:min-h-screen flex items-center overflow-hidden pt-28 md:pt-32 pb-12">
+
+      {/* Accent glow background */}
+      <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-accent/20 blur-[160px] rounded-full z-0" />
+
+      {/* Video background */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
           muted
           loop
           playsInline
+          preload="metadata"
           className="w-full h-full object-cover"
-          poster=""
+          poster={heroPoster}
         >
           <source src={HERO_VIDEO} type="video/mp4" />
         </video>
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px]" />
+
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/45 to-black/50" />
+
+        {/* vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent,rgba(0,0,0,0.65))]" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 site-container w-full">
-        <motion.div style={{ y: yOffset }} className="max-w-4xl">
-          {/* Overline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-accent font-grotesk text-xs uppercase tracking-[0.3em] mb-4 sm:mb-6"
-          >
-            Digital Growth Partner
-          </motion.p>
+        <motion.div style={{ y: yOffset }} className="max-w-5xl">
 
-          {/* Typing headline with invisible sizer */}
-          <div className="grid mb-4 sm:mb-6">
-            {TYPING_TEXTS.map((t, i) => (
-              <span
-                key={i}
-                aria-hidden
-                className="[grid-area:h] editorial-heading text-[clamp(1.5rem,5vw,4.5rem)] invisible leading-[1.1] max-w-3xl"
-              >
-                {t}&nbsp;
-              </span>
-            ))}
-            {/* Visible typing text in same cell */}
-            <h1 className="[grid-area:h] editorial-heading text-[clamp(1.5rem,5vw,4.5rem)] text-foreground leading-[1.1] max-w-3xl">
-              {displayText}
-              <span className="inline-block w-[3px] h-[1em] bg-accent ml-1 align-middle animate-pulse" />
-            </h1>
-          </div>
+          {/* Overline */}
+  <motion.p
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.2, duration: 0.8 }}
+  className="flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-[0.35em] mb-5 whitespace-nowrap"
+>
+  <Medal className="text-accent w-4 h-4 shrink-0" />
+  Digital Growth Partner
+</motion.p>
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.9 }}
+            className="editorial-heading text-[clamp(2.4rem,3vw,4rem)] leading-[1.1] text-white max-w-[24ch]"
+          >
+            Empowering your Digital Growth with Expert AI Solutions
+
+
+
+          </motion.h1>
 
           {/* Subtext */}
-          <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-lg leading-relaxed font-light mb-6 sm:mb-8">
-            We help startups and brands grow using performance marketing, SEO, and AI-powered strategies.
+          <p className="text-white/90 text-lg md:text-xl max-w-xl mt-6 leading-relaxed">
+            We help startups and brands grow using performance marketing,
+            SEO, and AI-powered automation strategies.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3">
+          {/* Feature icons */}
+          <div className="flex flex-wrap gap-6 mt-7 text-white/90 text-sm">
+
+            <span className="flex items-center gap-2">
+              <FaChartLine className="text-accent" />
+              Performance Marketing
+            </span>
+
+            <span className="flex items-center gap-2">
+              <FaSearch className="text-accent" />
+              SEO Growth
+            </span>
+
+            <span className="flex items-center gap-2">
+              <FaRobot className="text-accent" />
+              AI Automation
+            </span>
+
+          </div>
+
+          {/* CTA buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-9 w-full items-stretch sm:items-start">
+
             <MagneticButton
-              className="bg-accent text-accent-foreground rounded-full text-sm sm:text-base font-medium glow w-full sm:w-auto h-[48px] md:h-[52px] px-7 min-w-[180px] flex items-center justify-center"
+              className="bg-accent text-accent-foreground rounded-full text-base font-medium glow px-8 h-[54px] w-full sm:w-auto flex items-center justify-center"
               onClick={() => setModalOpen(true)}
             >
               Get Free Strategy →
             </MagneticButton>
+
             <MagneticButton
-              className="glass rounded-full text-sm sm:text-base font-medium text-foreground w-full sm:w-auto h-[48px] md:h-[52px] px-7 min-w-[180px] flex items-center justify-center"
-              onClick={() => {
-                const target = document.getElementById("work");
-                if (target) getLenis()?.scrollTo(target, { offset: -60, duration: 1.4 });
-              }}
+              className="glass rounded-full text-base font-medium  px-8 h-[54px] w-full sm:w-auto flex items-center justify-center"
+              onClick={() => setModalOpen(true)}
             >
               View Case Studies
             </MagneticButton>
+
           </div>
+
         </motion.div>
       </div>
 
@@ -137,22 +141,27 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-2 hidden md:flex"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
       >
-        <span className="text-muted-foreground text-xs uppercase tracking-[0.2em]">Scroll</span>
+        <span className="text-white/60 text-xs uppercase tracking-[0.2em]">
+          Scroll
+        </span>
+
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-px h-8 bg-gradient-to-b from-accent to-transparent"
+          className="w-[2px] h-8 bg-gradient-to-b from-accent to-transparent"
         />
       </motion.div>
 
+      {/* Modal */}
       <LeadCaptureModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
         sourcePage="Homepage"
         sourceLabel="Hero CTA - Get Free Strategy"
       />
+
     </section>
   );
 };

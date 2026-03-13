@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getLenis } from "./SmoothScroll";
+import { useTheme } from "next-themes";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -28,6 +29,8 @@ const Navigation = () => {
   const dropdownTimeout = useRef<ReturnType<typeof setTimeout>>();
   const navigate = useNavigate();
   const location = useLocation();
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -97,7 +100,7 @@ const Navigation = () => {
         style={{ position: "fixed", top: 24, left: 0, right: 0, zIndex: 1002 }}
       >
         <nav
-          className={`mx-auto w-[calc(100vw-2rem)] max-w-5xl rounded-full px-5 py-3 md:px-8 md:py-4 transition-all duration-500 overflow-visible ${
+          className={`mx-auto border  border-blue-200 w-[calc(100vw-2rem)] max-w-5xl rounded-full px-5 py-3 md:px-8 md:py-4 transition-all duration-500 overflow-visible ${
             scrolled ? "glass-strong" : "glass"
           }`}
         >
@@ -130,7 +133,7 @@ const Navigation = () => {
                         href={link.href}
                         onClick={(e) => handleNavClick(e, link.href)}
                         className={`relative text-[11px] font-medium tracking-wider uppercase transition-colors duration-300 group whitespace-nowrap inline-flex items-center gap-1 ${
-                          active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                          active ? "text-foreground" : "text-foreground hover:text-foreground"
                         }`}
                         data-hover
                       >
@@ -205,7 +208,7 @@ const Navigation = () => {
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
                     className={`relative text-[11px] font-medium tracking-wider uppercase transition-colors duration-300 group whitespace-nowrap ${
-                      active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                      active ? "text-foreground" : "text-foreground hover:text-foreground"
                     }`}
                     data-hover
                   >
@@ -222,6 +225,21 @@ const Navigation = () => {
 
             {/* Right: CTA + Hamburger */}
             <div className="flex items-center gap-3 md:justify-self-end flex-shrink-0">
+              {/* Theme toggle */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setTheme(isDark ? "light" : "dark")}
+                aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+                className="glass w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center text-xs text-foreground"
+                data-hover
+              >
+                {isDark ? (
+                  <span className="inline-block">☼</span>
+                ) : (
+                  <span className="inline-block">☾</span>
+                )}
+              </motion.button>
               <motion.div
                 className="relative group"
                 whileHover={{ scale: 1.03 }}

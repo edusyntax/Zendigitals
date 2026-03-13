@@ -29,7 +29,7 @@ const CaseStudiesSection = () => {
         <ScrollReveal>
           <p className="text-accent font-grotesk text-sm uppercase tracking-[0.3em] mb-4">Selected Work</p>
           <h2 className="editorial-heading text-[clamp(2rem,5vw,4.5rem)] text-foreground max-w-3xl">
-            Case <span className="font-serif italic text-gradient-accent">Studies</span>
+            Case <span className="font-serif italic text-or">Studies</span>
           </h2>
         </ScrollReveal>
       </div>
