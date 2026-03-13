@@ -1,179 +1,150 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import ScrollReveal from "@/components/ScrollReveal";
+import { motion } from "framer-motion";
+import ScrollReveal from "./ScrollReveal";
 
-const items = [
+const testimonials = [
   {
-    id: "01",
-    title: "Joy of Traveling",
-    description:
-      "Discover the emotional richness that comes from immersive journeys and cultural exploration.",
-    image: "https://picsum.photos/500/700?1",
+    quote: "Zendigital rebuilt our acquisition system and doubled our conversion rate.",
+    name: "Nora Elkins",
+    role: "Head of Growth",
+    avatar: "https://i.pravatar.cc/60?img=1",
   },
   {
-    id: "02",
-    title: "Purposeful Journey",
-    description:
-      "Every trip can teach something new. When we travel with purpose, every step feels meaningful and alive.",
-    image: "https://picsum.photos/500/700?2",
+    quote: "The clarity they brought to our brand architecture changed everything.",
+    name: "Amira Benali",
+    role: "Brand Director",
+    avatar: "https://i.pravatar.cc/60?img=2",
   },
   {
-    id: "03",
-    title: "Smart Trip Planning",
-    description:
-      "Structure your adventures with clarity and intention for maximum impact.",
-    image: "https://picsum.photos/500/700?3",
+    quote: "Systems that compound results month after month.",
+    name: "Priya Sharma",
+    role: "VP Marketing",
+    avatar: "https://i.pravatar.cc/60?img=3",
   },
   {
-    id: "04",
-    title: "Memories Beyond Photos",
-    description:
-      "Moments that go deeper than documentation — they transform perspective.",
-    image: "https://picsum.photos/500/700?4",
+    quote: "Clean execution and scalable infrastructure.",
+    name: "Leo Hartmann",
+    role: "Founder",
+    avatar: "https://i.pravatar.cc/60?img=4",
   },
   {
-    id: "05",
-    title: "Budget Adventures",
-    description:
-      "Extraordinary experiences don’t require extraordinary budgets.",
-    image: "https://picsum.photos/500/700?5",
+    quote: "Zendigital built a digital engine for predictable demand.",
+    name: "Suki Tanaka",
+    role: "Editorial Lead",
+    avatar: "https://i.pravatar.cc/60?img=5",
   },
 ];
 
-const HoverFlexSection = () => {
-  const [active, setActive] = useState<number | null>(1);
+const TestimonialCard = ({ t }: any) => (
+  <div
+    className="
+      w-[260px]
+      h-[240px]
+      rounded-2xl
+      border border-border
+      bg-card
+      p-6
+      shadow-sm
+      flex flex-col justify-between
+      mx-3
+      select-none
+    "
+  >
+    <p className="text-muted-foreground text-sm leading-relaxed">
+      “{t.quote}”
+    </p>
+
+    <div className="flex items-center gap-3">
+      <img
+        src={t.avatar}
+        className="w-10 h-10 rounded-full object-cover"
+      />
+      <div>
+        <p className="text-sm font-semibold text-card-foreground">
+          {t.name}
+        </p>
+        <p className="text-xs text-muted-foreground">
+          {t.role}
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
+const TestimonialsSection = () => {
+  const row1 = testimonials.slice(0, 3);
+  const row2 = testimonials.slice(2);
 
   return (
-    <section className="relative py-6 md:py-12 overflow-hidden">
-      <div className="site-container">
+    <section className="relative py-6 overflow-hidden">
 
-        {/* Heading */}
+      {/* Heading */}
+      <div className="site-container">
         <ScrollReveal>
           <p className="text-xs tracking-[0.4em] uppercase text-accent mb-2">
-            Frequently{" "}
+            Strategic{" "}
             <span className="bg-[#FF6A3D] text-white px-2 py-2 rounded-md">
-              Asked
+              Intelligence
             </span>
           </p>
 
-          <h2 className="text-[clamp(2.4rem,4vw,3.2rem)] leading-tight font-bold tracking-tight text-foreground max-w-2xl mb-12">
-            Clear answers.{" "}
-            <span className="font-serif text-gradient-accent">
-              No noise.
-            </span>
+          <h2 className="text-[clamp(2.4rem,3.5vw,3.2rem)] mb-1 leading-tight font-bold tracking-tight text-foreground max-w-2xl">
+            Insights shaping digital{" "}
+            <span className="font-serif text-gradient-accent">authority</span>
           </h2>
         </ScrollReveal>
+      </div>
 
-        {/* FAQ List */}
-        <div className="space-y-8">
+      {/* Marquee Container */}
+      <div className="relative group site-container space-y-6">
 
-          {items.map((item, index) => {
-            const isActive = active === index;
+        {/* Edge fade masks */}
 
-            return (
-              <motion.div
-                key={item.id}
-                onMouseEnter={() => setActive(index)}
-                className="relative border border-border cursor-pointer rounded-xl overflow-visible bg-card"
-                animate={{
-                  backgroundColor: isActive
-                    ? "hsl(var(--accent) / 0.08)"
-                    : "hsl(var(--card))",
-                  scale: isActive ? 1.02 : 1,
-                }}
-                transition={{ duration: 0.25 }}
-              >
+        {/* Row 1 */}
+        <div className="flex overflow-hidden group-hover:[&>div]:animation-play-state-paused">
 
-                {/* Floating Image */}
-                <AnimatePresence>
-                  {isActive && (
-                    <motion.img
-                      key={item.image}
-                      src={item.image}
-                      initial={{ opacity: 0, scale: 0.85, rotate: -6, x: 20 }}
-                      animate={{ opacity: 1, scale: 1, rotate: -6, x: 0 }}
-                      exit={{ opacity: 0, scale: 0.85, rotate: -6, x: 20 }}
-                      transition={{ duration: 0.35 }}
-                      className="
-                        hidden md:block
-                        absolute
-                        right-16
-                        top-1/2
-                        -translate-y-1/2
-                        w-32
-                        h-40
-                        object-cover
-                        rounded-xl
-                        shadow-xl
-                        pointer-events-none
-                        z-20
-                      "
-                    />
-                  )}
-                </AnimatePresence>
-
-                <div className="flex items-center justify-between py-6 px-8 md:py-8 md:px-10 gap-4">
-
-                  {/* LEFT CONTENT */}
-                  <div className="flex-1">
-                    <div className="flex items-start gap-6">
-
-                      <span className="font-mono text-2xl font-bold flex-shrink-0 text-accent">
-                        {item.id}
-                      </span>
-
-                      <div className="flex-1">
-
-                        <h3 className="text-2xl font-bold text-foreground">
-                          {item.title}
-                        </h3>
-
-                        <AnimatePresence>
-                          {isActive && (
-                            <motion.p
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.3 }}
-                              className="mt-3 text-sm leading-relaxed max-w-2xl overflow-hidden text-muted-foreground"
-                            >
-                              {item.description}
-                            </motion.p>
-                          )}
-                        </AnimatePresence>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* RIGHT SIDE */}
-                  <div className="flex items-center gap-4 md:gap-6 flex-shrink-0">
-
-                    <motion.div
-                      animate={{ rotate: isActive ? 45 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className={`w-10 h-10 flex items-center justify-center rounded-full border-2 transition-all ${
-                        isActive
-                          ? "border-accent/60 text-accent"
-                          : "border-border text-muted-foreground"
-                      }`}
-                    >
-                      <ArrowUpRight size={18} strokeWidth={2.5} />
-                    </motion.div>
-
-                  </div>
-
-                </div>
-
-              </motion.div>
-            );
-          })}
+          <motion.div
+            className="flex shrink-0"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 35,
+              ease: "linear",
+            }}
+            style={{ willChange: "transform" }}
+          >
+            {[...row1, ...row1, ...row1].map((t, i) => (
+              <TestimonialCard key={`r1-${i}`} t={t} />
+            ))}
+          </motion.div>
 
         </div>
+
+        {/* Row 2 */}
+        <div className="flex overflow-hidden group-hover:[&>div]:animation-play-state-paused">
+
+          <motion.div
+            className="flex shrink-0"
+            animate={{ x: ["-50%", "0%"] }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 35,
+              ease: "linear",
+            }}
+            style={{ willChange: "transform" }}
+          >
+            {[...row2, ...row2, ...row2].map((t, i) => (
+              <TestimonialCard key={`r2-${i}`} t={t} />
+            ))}
+          </motion.div>
+
+        </div>
+
       </div>
+
     </section>
   );
 };
 
-export default HoverFlexSection;
+export default TestimonialsSection;
