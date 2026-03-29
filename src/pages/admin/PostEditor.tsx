@@ -368,7 +368,7 @@ const PostEditor = () => {
             <div className="mt-4 p-4 bg-muted/30 rounded-lg">
               <p className="text-xs text-muted-foreground mb-2">Google Preview</p>
               <p className="text-blue-500 text-sm font-medium truncate">{seoTitle || title || "Post Title"}</p>
-              <p className="text-green-700 text-xs">zendigitalz.com/blog/{slug}</p>
+              <p className="text-green-700 text-xs">VirelaTech.com/blog/{slug}</p>
               <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{seoDescription || excerpt || "Meta description..."}</p>
             </div>
           </div>

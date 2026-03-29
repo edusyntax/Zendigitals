@@ -222,7 +222,7 @@ const LeadDetail = () => {
           <div className="bg-card border border-border rounded-xl p-6 space-y-3">
             <h2 className="text-sm font-semibold text-foreground">Quick Actions</h2>
             <a
-              href={`mailto:${lead.email}?subject=Re: Your inquiry at Zendigitalz`}
+              href={`mailto:${lead.email}?subject=Re: Your inquiry at VirelaTech`}
               className="flex items-center gap-2 text-sm text-accent hover:underline"
             >
               <Mail className="h-4 w-4" /> Send Email

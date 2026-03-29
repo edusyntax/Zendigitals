@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import ServicesPage from "./pages/Services";
 import WebsiteDesign from "./pages/services/WebsiteDesign";
 import SEOServices from "./pages/services/SEOServices";
+import GoogleAds from "./pages/services/GoogleAds"; 
 import LeadGeneration from "./pages/services/LeadGeneration";
 import SocialMediaMarketing from "./pages/services/SocialMediaMarketing";
 import PPCServices from "./pages/services/PPCServices";
@@ -35,6 +36,8 @@ import Leads from "./pages/admin/Leads";
 import LeadDetail from "./pages/admin/LeadDetail";
 import HoverFlexSection from "../src/components/ui/Faq"
 import TestimonialsPage from "./pages/TestimonialsPage";
+import EmailMarketing from "./pages/services/Emailmarketing";
+import ContentMarketing from "./pages/services/ContentMarketing";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -60,9 +63,12 @@ const App = () => (
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/services/website-design" element={<WebsiteDesign />} />
               <Route path="/services/seo-services" element={<SEOServices />} />
+              <Route path="/services/google-ads" element={<GoogleAds />} />
               <Route path="/services/lead-generation-campaigns" element={<LeadGeneration />} />
               <Route path="/services/social-media-marketing" element={<SocialMediaMarketing />} />
-              <Route path="/services/ppc-services" element={<PPCServices />} />
+              <Route path="/services/meta-ads" element={<PPCServices />} />
+              <Route path="/services/content-marketing" element={<ContentMarketing />} />
+              <Route path="/services/email-marketing" element={<EmailMarketing />} />
               <Route path="/services/ai-automation" element={<AIAutomation />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
               <Route path="/blog" element={<BlogPage />} />

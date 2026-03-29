@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services", hasDropdown: true },
+  { label: "Services", href: "/", hasDropdown: true },
   { label: "Testimonials", href: "/testimonials" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
@@ -15,9 +15,12 @@ const NAV_LINKS = [
 const SERVICE_ITEMS = [
   { label: "Website Design", description: "Stunning, conversion-focused websites", href: "/services/website-design" },
   { label: "SEO Services", description: "Organic search dominance", href: "/services/seo-services" },
+  { label: "Google Ads", description: "High-converting lead campaigns", href: "/services/google-ads" },
   { label: "Lead Generation", description: "High-converting lead campaigns", href: "/services/lead-generation-campaigns" },
   { label: "Social Media Marketing", description: "Community & brand growth", href: "/services/social-media-marketing" },
-  { label: "PPC Services", description: "ROI-focused paid advertising", href: "/services/ppc-services" },
+  {label:"content marketing", description: "Engaging content that ranks and converts", href: "/services/content-marketing"},  
+  {label:"email marketing", description: "Nurture leads and drive repeat business", href: "/services/email-marketing"},
+  { label: "Meta Ads", description: "Facebook and Instagram advertising", href: "/services/meta-ads" },
   { label: "AI Automation", description: "Intelligent marketing systems", href: "/services/ai-automation" },
 ];
 
@@ -113,7 +116,7 @@ const Navigation = () => {
               className="text-foreground font-grotesk font-bold text-sm md:text-base tracking-tight flex-shrink-0"
               data-hover
             >
-              ZENDIGITALZ
+              VirelaTech
             </a>
 
             {/* Center: Nav links (desktop only) */}
@@ -184,7 +187,7 @@ const Navigation = () => {
                               ))}
                               <div className="h-px bg-border my-1" />
                               <a
-                                href="/services"
+                                href="/"
                                 onClick={(e) => handleNavClick(e, "/services")}
                                 className="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-accent/10 transition-colors duration-200"
                                 data-hover
@@ -354,7 +357,7 @@ const Navigation = () => {
                                   key={item.href}
                                   href={item.href}
                                   onClick={(e) => handleNavClick(e, item.href)}
-                                  className="text-muted-foreground text-base sm:text-lg font-grotesk hover:text-accent transition-colors"
+                                  className="text-foreground  text-base sm:text-lg font-grotesk hover:text-accent transition-colors"
                                   data-hover
                                 >
                                   {item.label}

@@ -9,8 +9,8 @@ interface SEOHeadProps {
   jsonLd?: Record<string, unknown>;
 }
 
-const SITE_NAME = "Zendigitalz";
-const BASE_URL = "https://zendigitalz.com";
+const SITE_NAME = "VirelaTech";
+const BASE_URL = "https://VirelaTech.com";
 
 const SEOHead = ({ title, description, path, type = "website", jsonLd }: SEOHeadProps) => {
   const location = useLocation();
@@ -48,7 +48,7 @@ const SEOHead = ({ title, description, path, type = "website", jsonLd }: SEOHead
     setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", fullTitle);
     setMeta("twitter:description", description);
-    setMeta("twitter:site", "@Zendigitalz");
+    setMeta("twitter:site", "@VirelaTech");
 
     // Canonical
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -86,24 +86,24 @@ export default SEOHead;
 export const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Zendigitalz",
-  url: "https://zendigitalz.com",
+  name: "VirelaTech",
+  url: "https://VirelaTech.com",
   description: "Elite digital marketing agency engineering brand authority through strategy, performance marketing, and AI-powered technology.",
   contactPoint: {
     "@type": "ContactPoint",
-    email: "hello@zendigitalz.com",
+    email: "hello@VirelaTech.com",
     contactType: "sales",
   },
   sameAs: [
-    "https://twitter.com/Zendigitalz",
-    "https://linkedin.com/company/zendigitalz",
+    "https://twitter.com/VirelaTech",
+    "https://linkedin.com/company/VirelaTech",
   ],
 };
 
 export const serviceJsonLd = (name: string, description: string) => ({
   "@context": "https://schema.org",
   "@type": "Service",
-  provider: { "@type": "Organization", name: "Zendigitalz" },
+  provider: { "@type": "Organization", name: "VirelaTech" },
   name,
   description,
   areaServed: "Worldwide",
@@ -115,7 +115,7 @@ export const blogPostJsonLd = (title: string, description: string, date: string,
   headline: title,
   description,
   datePublished: date,
-  author: { "@type": "Organization", name: "Zendigitalz" },
-  publisher: { "@type": "Organization", name: "Zendigitalz" },
-  mainEntityOfPage: `https://zendigitalz.com/blog/${slug}`,
+  author: { "@type": "Organization", name: "VirelaTech" },
+  publisher: { "@type": "Organization", name: "VirelaTech" },
+  mainEntityOfPage: `https://VirelaTech.com/blog/${slug}`,
 });

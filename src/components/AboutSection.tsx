@@ -68,7 +68,7 @@ const AboutSection = () => {
           <p className="text-xs tracking-[0.4em] uppercase text-accent mb-2">
             About{" "}
             <span className="bg-[#FF6A3D] text-white px-2 py-2 rounded-md">
-              Zendigitalz
+              VirelaTech
             </span>
           </p>
         </ScrollReveal>

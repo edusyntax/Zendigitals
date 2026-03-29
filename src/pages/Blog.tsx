@@ -31,7 +31,7 @@
 //     <PageLayout>
 //       <SEOHead
 //         title="Blog — Digital Marketing Insights"
-//         description="Actionable strategies, industry analysis, and expert perspectives on digital marketing, SEO, AI, and growth from the Zendigitalz team."
+//         description="Actionable strategies, industry analysis, and expert perspectives on digital marketing, SEO, AI, and growth from the VirelaTech team."
 //       />
 //       <PageHero overline="Blog" title="Insights for" titleAccent="growth-driven brands" description="Actionable strategies, industry analysis, and expert perspectives on digital marketing, SEO, AI, and growth." />
 
@@ -70,7 +70,7 @@
 //                   <div className="flex items-center gap-3">
 //                     <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center"><span className="text-accent font-grotesk text-xs font-bold">Z</span></div>
 //                     <div>
-//                       <p className="text-foreground text-sm font-medium">{(featured as any).profiles?.display_name ?? "Zendigitalz"}</p>
+//                       <p className="text-foreground text-sm font-medium">{(featured as any).profiles?.display_name ?? "VirelaTech"}</p>
 //                       <p className="text-muted-foreground text-xs">{featured.published_at ? format(new Date(featured.published_at), "MMMM d, yyyy") : ""}</p>
 //                     </div>
 //                   </div>
@@ -280,7 +280,7 @@ const BlogSection = () => {
         </div>
         <div>
           <p className="text-sm font-medium text-foreground">
-            Zendigitalz Team
+            VirelaTech Team
           </p>
           <p className="text-xs text-muted-foreground">
             June 2026

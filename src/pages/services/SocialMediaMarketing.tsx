@@ -1,40 +1,56 @@
 import PageLayout from "@/components/PageLayout";
-import ServicePageTemplate from "@/components/ServicePageTemplate";
 import SEOHead, { serviceJsonLd } from "@/components/SEOHead";
 
-const SocialMediaMarketing = () => (
-  <PageLayout>
-    <SEOHead title="Social Media Marketing" description="Strategic social media management that builds communities, amplifies your brand, and drives conversions." jsonLd={serviceJsonLd("Social Media Marketing", "Strategic social media for brand growth and conversions.")} />
-    <ServicePageTemplate
-      overline="Social Media Marketing"
-      title="Turn social attention into"
-      titleAccent="real customers"
-      description="Strategic social media management that builds engaged communities, amplifies your brand, and drives measurable conversions."
-      problem="Most brands post without purpose — inconsistent content, no engagement strategy, and zero connection between social activity and revenue. Social becomes a time sink instead of a growth engine."
-      solution="We build social media systems that combine brand storytelling, community management, and conversion-focused content to turn followers into loyal customers. Every post serves a strategic purpose."
-      process={[
-        { step: "Phase 01", title: "Brand Audit", description: "Competitive analysis, audience research, and brand voice development for social platforms." },
-        { step: "Phase 02", title: "Content Strategy", description: "Content calendar, format optimization, and creative production aligned with business goals." },
-        { step: "Phase 03", title: "Community Building", description: "Engagement protocols, influencer partnerships, and community management systems." },
-        { step: "Phase 04", title: "Optimize & Scale", description: "Performance analysis, A/B testing, and scaling what works across platforms." },
-      ]}
-      benefits={[
-        { title: "Brand Awareness", description: "Reach millions of potential customers with strategic, platform-native content." },
-        { title: "Community Engagement", description: "Build a loyal audience that advocates for your brand organically." },
-        { title: "Social Commerce", description: "Direct conversion pathways from social platforms to purchase." },
-        { title: "Trend Agility", description: "Stay ahead of platform changes and cultural trends with rapid content adaptation." },
-        { title: "Influencer Strategy", description: "Strategic partnerships with creators who align with your brand values." },
-        { title: "Cross-Platform Presence", description: "Unified brand experience across Instagram, TikTok, LinkedIn, Twitter, and more." },
-      ]}
-      caseResults={[
-        { metric: "Engagement Rate", value: "8.4%", description: "Average engagement rate across managed accounts (industry avg: 1.2%)" },
-        { metric: "Follower Growth", value: "450%", description: "Average audience growth within 6 months of management" },
-        { metric: "Social Revenue", value: "$2.1M", description: "Revenue attributed to social media campaigns" },
-      ]}
-      ctaPrimary="Start Your Social Strategy"
-      ctaUrgency="Free social media audit — limited spots available"
-    />
-  </PageLayout>
-);
+// Sections
+import { HeroSection } from "@/pages/services/ui/HeroSection";
+import { ProblemSection } from "@/pages/services/ui/ProblemSection";
+import { ServiceBreakdown } from "@/pages/services/ui/ServiceBreakdown";
+import { ApproachSection } from "@/pages/services/ui/ApproachSection";
+import { ProcessSection } from "@/pages/services/ui/ProcessSection";
+import { ResultsSection } from "@/pages/services/ui/ResultsSection";
+import { CTASection } from "@/pages/services/ui/CTASection";
+import FAQSection from "@/components/ui/serviceFaq";
+import { faqData } from "@/content/servicesfaq";
 
-export default SocialMediaMarketing;
+// Content (Social Media content file)
+import {
+  heroData,
+  problemData,
+  serviceData,
+  approachData,
+  processData,
+  resultsData,
+  ctaData
+} from "@/content/smmarketing";
+
+const SocialMedia = () => {
+  return (
+    <PageLayout>
+      <SEOHead
+        title="Social Media Marketing Services | Build Engagement & Brand Growth"
+        description="Strategic social media marketing that builds brand presence, improves engagement, and drives real business results."
+        jsonLd={serviceJsonLd(
+          "Social Media Marketing Services",
+          "Social media strategies designed to build brand presence, engage audiences, and drive measurable growth."
+        )}
+      />
+
+      {/* FLOW: Brand + engagement narrative */}
+      <HeroSection data={heroData} />
+      <ProblemSection data={problemData} />
+      <ServiceBreakdown data={serviceData} />
+
+      {/* Mid CTA */}
+      <CTASection data={ctaData} />
+
+      <ApproachSection data={approachData} />
+      <ProcessSection data={processData} />
+      <ResultsSection data={resultsData} />
+      <FAQSection data={faqData} categories={["Social Media Marketing"]} />
+      {/* Final CTA */}
+      <CTASection data={ctaData} />
+    </PageLayout>
+  );
+};
+
+export default SocialMedia;
