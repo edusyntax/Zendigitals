@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services", hasDropdown: true },
+  { label: "Services", href: "/", hasDropdown: true },
   { label: "Testimonials", href: "/testimonials" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
@@ -187,7 +187,7 @@ const Navigation = () => {
                               ))}
                               <div className="h-px bg-border my-1" />
                               <a
-                                href="/services"
+                                href="/"
                                 onClick={(e) => handleNavClick(e, "/services")}
                                 className="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-accent/10 transition-colors duration-200"
                                 data-hover
@@ -357,7 +357,7 @@ const Navigation = () => {
                                   key={item.href}
                                   href={item.href}
                                   onClick={(e) => handleNavClick(e, item.href)}
-                                  className="text-muted-foreground text-base sm:text-lg font-grotesk hover:text-accent transition-colors"
+                                  className="text-foreground  text-base sm:text-lg font-grotesk hover:text-accent transition-colors"
                                   data-hover
                                 >
                                   {item.label}
