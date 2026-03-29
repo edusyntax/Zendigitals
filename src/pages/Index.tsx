@@ -29,7 +29,7 @@ const Index = () => {
     <>
       <SEOHead
         title="Digital Marketing Agency"
-        description="Zendigitalz is an elite digital marketing agency engineering brand authority through performance marketing, SEO, AI automation, and data-driven growth strategies."
+        description="VirelaTech is an elite digital marketing agency engineering brand authority through performance marketing, SEO, AI automation, and data-driven growth strategies."
         path="/"
         jsonLd={organizationJsonLd}
       />

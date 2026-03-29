@@ -4,55 +4,81 @@ import { FaWhatsapp, FaPhone, FaPlus } from "react-icons/fa";
 import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 
-import glassPrism from "@/assets/glass-prism.png";
-import bgcard from "@/assets/bgcard.png"
-import bgcard1 from "@/assets/bgcard-1.png"
-import chromeKnot from "@/assets/chrome-knot.png";
-import holographicFluid from "@/assets/holographic-fluid.png";
-import heroObject from "@/assets/hero-object.jpg";
-import metalMonolith from "@/assets/metallic-monolith.png";
+
+import web from "@/assets/services/webservices.jpeg";
+import seo from "@/assets/services/seo.jpeg";
+import lead from "@/assets/services/leadgeneration.jpeg";
+import sm from "@/assets/services/sm.jpeg";
+import ppc from "@/assets/services/GD.jpeg";
+import email from "@/assets/services/email.jpeg";
+import meta from "@/assets/services/metaads.jpeg";
+import cm from "@/assets/services/cm.jpeg";
+import ai from "@/assets/services/ai.jpg";
+
 
 const services = [
   {
-    title: "Website Design",
+    title: "Web Development",
     description:
       "Stunning, conversion-focused websites that captivate visitors and drive measurable business results.",
-    image: bgcard1,
+    image: web,
     href: "/services/website-design",
   },
   {
     title: "SEO Services",
     description:
       "Dominate search rankings with data-driven SEO strategies that drive sustainable organic traffic.",
-    image: bgcard1,
+    image: seo,
     href: "/services/seo-services",
   },
   {
     title: "Lead Generation",
     description:
       "High-converting lead generation campaigns that fill your pipeline with qualified prospects.",
-    image: bgcard1,
+    image: lead,
     href: "/services/lead-generation-campaigns",
   },
   {
     title: "Social Media Marketing",
     description:
       "Strategic social media management that builds engaged communities.",
-    image: bgcard1,
+    image: sm,
     href: "/services/social-media-marketing",
   },
   {
-    title: "PPC Services",
+    title: "Google Ads   ",
     description:
       "ROI-focused paid advertising campaigns across Google and social platforms.",
-    image: bgcard1,
+    image:ppc,
     href: "/services/ppc-services",
   },
   {
-    title: "AI Automation",
+    title: "Meta Ads  ",
+    description:
+      "ROI-focused paid advertising campaigns across  social platforms.",
+    image:meta,
+    href: "/services/ppc-services",
+  },
+    {
+    title: "Content Marketing   ",
+    description:
+      "ROI-focused paid advertising campaigns across Google and social platforms.",
+    image:cm,
+    href: "/services/ppc-services",
+  },
+   {
+    title: "Ai Automation  ",
     description:
       "Custom AI integrations and workflow automation that scale marketing operations.",
-    image: bgcard1,
+    image: ai,
+    href: "/services/ai-automation",
+  },
+  
+  {
+    title: "Email marketing",
+    description:
+      "Custom AI integrations and workflow automation that scale marketing operations.",
+    image: email,
     href: "/services/ai-automation",
   },
 ];
@@ -163,39 +189,25 @@ const CapabilitiesSection = () => {
                   {/* Expandable Actions */}
                   <div className="flex items-center gap-2">
 
-                    {active === i && (
-                      <motion.div
-                        className="flex items-center gap-2"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                      >
-                        <a
-                          href="https://wa.me/919999999999"
-                          onClick={(e) => e.stopPropagation()}
-                          className="w-9 h-9 rounded-full bg-green-500 flex items-center justify-center text-white"
-                        >
-                          <FaWhatsapp />
-                        </a>
-
-                        <a
-                          href="tel:+919999999999"
-                          onClick={(e) => e.stopPropagation()}
-                          className="w-9 h-9 rounded-full bg-accent flex items-center justify-center text-white"
-                        >
-                          <FaPhone />
-                        </a>
-                      </motion.div>
-                    )}
-
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setActive(active === i ? null : i);
-                      }}
-                      className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition"
+                    <motion.div
+                      className="flex items-center gap-2"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
                     >
-                      <FaPlus />
-                    </button>
+                      <a
+                        href="https://wa.me/919999999999"
+                        className="w-9 h-9 rounded-full bg-green-500 flex items-center justify-center text-white"
+                      >
+                        <FaWhatsapp />
+                      </a>
+
+                      <a
+                        href="tel:+919999999999"
+                        className="w-9 h-9 rounded-full bg-accent flex items-center justify-center text-white"
+                      >
+                        <FaPhone />
+                      </a>
+                    </motion.div>
 
                   </div>
 

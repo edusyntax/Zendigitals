@@ -57,12 +57,12 @@ const Footer = () => {
           {/* Column 1 — Company */}
           <ScrollReveal>
             <div>
-              <h3 className="text-foreground font-grotesk font-bold text-xl tracking-tight mb-4">ZENDIGITALZ</h3>
+              <h3 className="text-foreground font-grotesk font-bold text-xl tracking-tight mb-4">VirelaTech</h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                 Engineering digital authority for visionary brands.
               </p>
               <p className="text-muted-foreground/50 text-xs font-grotesk">
-                © {new Date().getFullYear()} Zendigitalz. All rights reserved.
+                © {new Date().getFullYear()} VirelaTech. All rights reserved.
               </p>
             </div>
           </ScrollReveal>

@@ -5,37 +5,41 @@ import { ArrowUpRight } from "lucide-react";
 const items = [
   {
     id: "01",
-    title: "Joy of Traveling",
+    title: "What exactly do you help businesses with?",
     description:
-      "Discover the emotional richness that comes from immersive journeys and cultural exploration.",
+      "We help businesses get more visibility online and turn that visibility into actual leads. That can be through SEO, ads, social media, or improving your website—depending on what you need.",
     image: "https://picsum.photos/500/700?1",
   },
   {
     id: "02",
-    title: "Purposeful Journey",
-    description:
-      "Every trip can teach something new. When we travel with purpose, every step feels meaningful and alive.",
-    image: "https://picsum.photos/500/700?2",
+    title: "Which service should I start with?",
+    description:"That depends on your goal. If you need quick results, ads usually make sense. If you're thinking long-term, SEO and content help. We usually suggest a direction after understanding your business.",
+        image: "https://picsum.photos/500/700?2",
   },
   {
     id: "03",
-    title: "Smart Trip Planning",
-    description:
-      "Structure your adventures with clarity and intention for maximum impact.",
+    title: "How soon can I expect results?",
+    description:"Paid campaigns can start showing activity within a few days. Organic methods like SEO take more time, but they tend to be more consistent in the long run.",
     image: "https://picsum.photos/500/700?3",
   },
   {
     id: "04",
-    title: "Memories Beyond Photos",
-    description:
-      "Moments that go deeper than documentation — they transform perspective.",
+    title: " Do I need all your services or just one?",
+    description:"Not necessarily all. Some businesses only need one or two things done right. We usually recommend only what’s required instead of pushing everything.",
     image: "https://picsum.photos/500/700?4",
   },
   {
     id: "05",
-    title: "Budget Adventures",
+    title: "Will I be able to track what’s happening?",
     description:
-      "Extraordinary experiences don’t require extraordinary budgets.",
+      "Yes. We keep things transparent. You’ll know what’s being done, what’s working, and where things need improvement.",
+    image: "https://picsum.photos/500/700?5",
+  },
+  {
+    id: "06",
+    title: " Do you work with small businesses or only big brands?",
+    description:
+      "We work with both. In fact, many of the businesses we work with are small or growing, and that’s where structured marketing makes a big difference.",
     image: "https://picsum.photos/500/700?5",
   },
 ];

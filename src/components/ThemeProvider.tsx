@@ -10,7 +10,7 @@ const ThemeProvider = ({ children }: Props) => {
       attribute="class"
       defaultTheme="dark"
       enableSystem
-      storageKey="zendigitalz-theme"
+      storageKey="VirelaTechz-theme"
     >
       {children}
     </NextThemesProvider>

@@ -39,6 +39,10 @@ const PolaroidTimeline = () => {
   const [flipped, setFlipped] = useState<number | null>(null);
   const [lightbox, setLightbox] = useState<number | null>(null);
 
+  /* ===========================
+     ROPE GENERATION
+  =========================== */
+
   const generatePath = () => {
     if (!sectionRef.current) return;
 
@@ -78,25 +82,25 @@ const PolaroidTimeline = () => {
     return () => window.removeEventListener("resize", generatePath);
   }, []);
 
-  return (
-    <section
-      ref={sectionRef}
-      className="relative py-6 site-container"
-    >
-      {/* container aligned with About */}
-      <div className="relative max-w-6xl">
+  /* ===========================
+     UI
+  =========================== */
 
-        {/* Section Heading */}
+  return (
+    <section ref={sectionRef} className="relative py-6 site-container">
+      <div className="relative max-w-6xl mx-auto">
+
+        {/* HEADER */}
         <p className="text-xs tracking-[0.4em] uppercase text-accent mb-2">
           Operational{" "}
-          <span className="bg-[#FF6A3D] text-white px-2 py-2 rounded-md">
+          <span className="bg-[#FF6A3D] text-white px-2 py-1 rounded-md">
             Framework
           </span>
         </p>
 
         <h2 className="text-[clamp(2.4rem,4vw,3.2rem)] leading-tight font-bold tracking-tight text-foreground max-w-2xl">
           The system behind{" "}
-          <span className="font-serif   text-gradient-accent">every</span> result
+          <span className="font-serif text-gradient-accent">every</span> result
         </h2>
 
         {/* ROPE */}
@@ -114,7 +118,7 @@ const PolaroidTimeline = () => {
         </svg>
 
         {/* CARDS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-16">
 
           {milestones.map((item, i) => {
             const tilt = (i % 2 === 0 ? -1 : 1) * (8 + i * 2);
@@ -127,7 +131,6 @@ const PolaroidTimeline = () => {
                 transition={{ delay: i * 0.15 }}
                 className="relative"
               >
-
                 {/* Tape */}
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-6 bg-accent/30 rotate-[-8deg] rounded-sm opacity-80" />
 
@@ -138,52 +141,62 @@ const PolaroidTimeline = () => {
                   className="absolute -top-8 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-accent cursor-pointer"
                 />
 
-                {/* Polaroid */}
-                <motion.div
-                  onClick={() =>
-                    setFlipped(flipped === i ? null : i)
-                  }
-                  className="w-full max-w-[16rem] h-72 rounded-md border border-white/10 shadow-xl cursor-pointer relative mx-auto bg-background/40 backdrop-blur-sm"
-                  style={{
-                    rotate: tilt,
-                    transformStyle: "preserve-3d",
-                  }}
-                  animate={{
-                    rotateY: flipped === i ? 180 : 0,
-                  }}
-                  transition={{ duration: 0.8 }}
-                >
+                {/* ✅ REAL PERSPECTIVE */}
+                <div style={{ perspective: "1200px" }}>
 
-                  {/* FRONT */}
-                  <div
-                    className="absolute inset-0 p-4"
-                    style={{ backfaceVisibility: "hidden" }}
-                  >
-                    <img
-                      src={item.image}
-                      className="w-full h-48 object-cover rounded-sm"
-                    />
-
-                    <h3 className="mt-4 font-semibold text-foreground">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-sm text-muted-foreground">
-                      {item.caption}
-                    </p>
-                  </div>
-
-                  {/* BACK */}
-                  <div
-                    className="absolute inset-0 p-6 flex items-center justify-center text-center text-muted-foreground"
+                  <motion.div
+                    onClick={() =>
+                      setFlipped(flipped === i ? null : i)
+                    }
+                    className="w-full max-w-[16rem] min-h-[18rem] rounded-md border border-white/10 shadow-xl cursor-pointer relative mx-auto bg-background/40 backdrop-blur-sm"
                     style={{
-                      transform: "rotateY(180deg)",
-                      backfaceVisibility: "hidden",
+                      rotate: tilt,
+                      transformStyle: "preserve-3d",
                     }}
+                    animate={{
+                      rotateY: flipped === i ? 180 : 0,
+                    }}
+                    transition={{ duration: 0.8 }}
                   >
-                    {item.flipText}
-                  </div>
-                </motion.div>
+
+                    {/* FRONT */}
+                    <div
+                      className="absolute inset-0 w-full h-full p-4 flex flex-col"
+                      style={{ backfaceVisibility: "hidden" }}
+                    >
+                      <img
+                        src={item.image}
+                        className="w-full h-40 object-cover rounded-sm"
+                      />
+
+                      <h3 className="mt-4 font-semibold text-foreground">
+                        {item.title}
+                      </h3>
+
+                      <p className="text-sm text-muted-foreground">
+                        {item.caption}
+                      </p>
+                    </div>
+
+                    {/* BACK */}
+                    <div
+                      className="absolute inset-0 w-full h-full p-6 flex flex-col items-center justify-center text-center text-muted-foreground"
+                      style={{
+                        transform: "rotateY(180deg)",
+                        backfaceVisibility: "hidden",
+                      }}
+                    >
+                      <p className="text-sm leading-relaxed mb-4">
+                        {item.flipText}
+                      </p>
+
+                      <button className="px-4 py-2 bg-accent text-white rounded-md hover:opacity-90 transition">
+                        Contact Us
+                      </button>
+                    </div>
+
+                  </motion.div>
+                </div>
               </motion.div>
             );
           })}

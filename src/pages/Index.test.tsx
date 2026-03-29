@@ -17,7 +17,7 @@ describe("Homepage (Index route)", () => {
     render(<App />);
 
     // Navigation / brand
-    expect(screen.getAllByText(/ZENDIGITALZ/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/VirelaTech/i).length).toBeGreaterThan(0);
 
     // Hero content
     expect(
@@ -55,7 +55,7 @@ describe("Homepage (Index route)", () => {
     ).toBeInTheDocument();
 
     // Footer brand + nav (brand appears multiple times, so use getAllBy*)
-    expect(screen.getAllByText(/ZENDIGITALZ/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/VirelaTech/i).length).toBeGreaterThan(0);
     // At least one primary nav link (Home) is present
     expect(
       screen.getAllByRole("link", { name: /Home/i }).length
@@ -101,7 +101,7 @@ describe("Homepage (Index route)", () => {
     expect(
       screen.getByText(/Digital Growth Partner/i)
     ).toBeInTheDocument();
-    expect(screen.getAllByText(/ZENDIGITALZ/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/VirelaTech/i).length).toBeGreaterThan(0);
   });
 });
 

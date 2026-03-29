@@ -15,9 +15,12 @@ const NAV_LINKS = [
 const SERVICE_ITEMS = [
   { label: "Website Design", description: "Stunning, conversion-focused websites", href: "/services/website-design" },
   { label: "SEO Services", description: "Organic search dominance", href: "/services/seo-services" },
+  { label: "Google Ads", description: "High-converting lead campaigns", href: "/services/google-ads" },
   { label: "Lead Generation", description: "High-converting lead campaigns", href: "/services/lead-generation-campaigns" },
   { label: "Social Media Marketing", description: "Community & brand growth", href: "/services/social-media-marketing" },
-  { label: "PPC Services", description: "ROI-focused paid advertising", href: "/services/ppc-services" },
+  {label:"content marketing", description: "Engaging content that ranks and converts", href: "/services/content-marketing"},  
+  {label:"email marketing", description: "Nurture leads and drive repeat business", href: "/services/email-marketing"},
+  { label: "Meta Ads", description: "Facebook and Instagram advertising", href: "/services/meta-ads" },
   { label: "AI Automation", description: "Intelligent marketing systems", href: "/services/ai-automation" },
 ];
 
@@ -113,7 +116,7 @@ const Navigation = () => {
               className="text-foreground font-grotesk font-bold text-sm md:text-base tracking-tight flex-shrink-0"
               data-hover
             >
-              ZENDIGITALZ
+              VirelaTech
             </a>
 
             {/* Center: Nav links (desktop only) */}

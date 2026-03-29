@@ -38,15 +38,15 @@ export function generateArticleJsonLd(post: {
     dateModified: post.updated_at || post.published_at || "",
     author: {
       "@type": "Person",
-      name: post.author_name || "Zendigitalz",
+      name: post.author_name || "VirelaTech",
     },
     publisher: {
       "@type": "Organization",
-      name: "Zendigitalz",
+      name: "VirelaTech",
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://zendigitalz.com/blog/${post.slug}`,
+      "@id": `https://VirelaTech.com/blog/${post.slug}`,
     },
   };
 }

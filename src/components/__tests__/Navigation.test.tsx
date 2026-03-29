@@ -20,7 +20,7 @@ describe("Navigation", () => {
   it("renders primary navigation links", () => {
     renderNav();
 
-    expect(screen.getByText(/ZENDIGITALZ/i)).toBeInTheDocument();
+    expect(screen.getByText(/VirelaTechZ/i)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Home/i })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Services/i })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Testimonials/i })).toBeInTheDocument();

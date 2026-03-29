@@ -8,11 +8,11 @@ import SEOHead from "@/components/SEOHead";
 import HoverFlexSection from "@/components/ui/Faq";
 
 const testimonials = [
-  { quote: "Zendigitalz didn't just build our platform — they engineered our market position. Revenue up 340% in 8 months.", name: "Alexei Volkov", role: "CEO", company: "Nebula Finance" },
+  { quote: "VirelaTech didn't just build our platform — they engineered our market position. Revenue up 340% in 8 months.", name: "Alexei Volkov", role: "CEO", company: "Nebula Finance" },
   { quote: "The precision. The craft. Every pixel, every interaction — deliberately architected. This is what elite looks like.", name: "Maya Chen", role: "CPO", company: "Void Studios" },
-  { quote: "We interviewed 12 agencies. Zendigitalz was the only team that understood systems, not just aesthetics.", name: "James Whitfield", role: "Founder", company: "Chromatic" },
+  { quote: "We interviewed 12 agencies. VirelaTech was the only team that understood systems, not just aesthetics.", name: "James Whitfield", role: "Founder", company: "Chromatic" },
   { quote: "Our conversion rate tripled. Our brand perception shifted entirely. They don't build websites — they build authority.", name: "Sophia Laurent", role: "CMO", company: "Scale Dynamics" },
-  { quote: "Working with Zendigitalz felt like upgrading from a sedan to a spacecraft. Technically flawless execution.", name: "Raj Patel", role: "CTO", company: "Apex Protocol" },
+  { quote: "Working with VirelaTech felt like upgrading from a sedan to a spacecraft. Technically flawless execution.", name: "Raj Patel", role: "CTO", company: "Apex Protocol" },
   { quote: "Our organic traffic increased by 400% in 6 months. The SEO strategy they built is a competitive moat.", name: "Elena Rodriguez", role: "VP Marketing", company: "DataCore" },
   { quote: "The AI automation systems they built saved us 30 hours per week in manual campaign management. Game changer.", name: "Michael Torres", role: "Head of Growth", company: "Quantum Labs" },
   { quote: "From day one, the team showed a level of strategic thinking we hadn't seen from any other agency. Exceptional.", name: "Sarah Kim", role: "Director of Digital", company: "Meridian Health" },
@@ -31,13 +31,13 @@ const TestimonialsPage = () => (
   <PageLayout>
     <SEOHead
       title="Client Testimonials"
-      description="Read what our clients say about working with Zendigitalz. Real results, real stories from industry leaders who trust our digital marketing expertise."
+      description="Read what our clients say about working with VirelaTech. Real results, real stories from industry leaders who trust our digital marketing expertise."
     />
     <PageHero
       overline="Testimonials"
       title="Trusted by brands that demand"
       titleAccent="excellence"
-      description="Hear directly from the leaders and teams who've experienced the Zendigitalz difference."
+      description="Hear directly from the leaders and teams who've experienced the VirelaTech difference."
     />
 
     <SectionTransition>
@@ -73,7 +73,7 @@ const TestimonialsPage = () => (
     </SectionTransition>
 
     <SectionTransition>
-      <UrgencyCTA headline="Ready to write your" headlineAccent="success story?" primaryCTA="Start Your Growth Strategy" secondaryCTA="Book a Free Strategy Call" urgencyNote="Join 150+ brands that trust Zendigitalz" sourcePage="Testimonials Page" />
+      <UrgencyCTA headline="Ready to write your" headlineAccent="success story?" primaryCTA="Start Your Growth Strategy" secondaryCTA="Book a Free Strategy Call" urgencyNote="Join 150+ brands that trust VirelaTech" sourcePage="Testimonials Page" />
     </SectionTransition>
   </PageLayout>
 );

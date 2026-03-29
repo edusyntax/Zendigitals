@@ -74,7 +74,7 @@ const AdminLayout = () => {
         <div className="flex items-center justify-between h-16 px-4 border-b border-border">
           {!collapsed && (
             <Link to="/admin" className="text-foreground font-grotesk font-bold text-sm tracking-tight">
-              ZENDIGITALZ
+              VirelaTech
             </Link>
           )}
           <Button
