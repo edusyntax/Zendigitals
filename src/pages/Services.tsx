@@ -7,13 +7,71 @@ import TiltCard from "@/components/TiltCard";
 import UrgencyCTA from "@/components/UrgencyCTA";
 import SEOHead, { serviceJsonLd } from "@/components/SEOHead";
 
+
 const services = [
-  { title: "Website Design", micro: "Design & development", description: "Stunning, conversion-focused websites that captivate visitors and drive measurable business results.", tags: ["Custom Design", "Responsive", "Performance"], slug: "/services/website-design" },
-  { title: "SEO Services", micro: "Organic dominance", description: "Dominate search rankings with data-driven SEO strategies that drive sustainable organic traffic and revenue growth.", tags: ["Technical SEO", "Content Strategy", "Link Building"], slug: "/services/seo-services" },
-  { title: "Lead Generation", micro: "Pipeline growth", description: "High-converting lead generation campaigns that fill your pipeline with qualified prospects ready to buy.", tags: ["Multi-Channel", "Lead Scoring", "Nurture"], slug: "/services/lead-generation-campaigns" },
-  { title: "Social Media Marketing", micro: "Brand amplification", description: "Strategic social media management that builds engaged communities and converts followers into customers.", tags: ["Strategy", "Content", "Community"], slug: "/services/social-media-marketing" },
-  { title: "PPC Services", micro: "Paid acquisition", description: "ROI-focused paid advertising across Google, Bing, and social platforms that scales revenue predictably.", tags: ["Google Ads", "Social Ads", "Landing Pages"], slug: "/services/ppc-services" },
-  { title: "AI Automation", micro: "Intelligent systems", description: "Custom AI integrations and workflow automation that scale marketing operations exponentially.", tags: ["AI Workflows", "Personalization", "Automation"], slug: "/services/ai-automation" },
+  {
+    title: "Web Development",
+    micro: "Design & development",
+    description: "Stunning, conversion-focused websites that captivate visitors and drive measurable business results.",
+    tags: ["Custom Design", "Responsive", "Performance"],
+    slug: "/services/website-design",
+  },
+  {
+    title: "SEO Services",
+    micro: "Organic growth",
+    description: "Dominate search rankings with data-driven SEO strategies that drive sustainable traffic and revenue.",
+    tags: ["Technical SEO", "Content Strategy", "Link Building"],
+    slug: "/services/seo-services",
+  },
+  {
+    title: "Google Ads",
+    micro: "Paid search",
+    description: "High-converting Google Ads campaigns designed to generate qualified leads and maximize ROI.",
+    tags: ["Search Ads", "Display", "Conversion Tracking"],
+    slug: "/services/google-ads",
+  },
+  {
+    title: "Meta Ads",
+    micro: "Social advertising",
+    description: "Facebook and Instagram ad campaigns that scale reach, engagement, and conversions.",
+    tags: ["Facebook Ads", "Instagram Ads", "Retargeting"],
+    slug: "/services/meta-ads",
+  },
+  {
+    title: "Lead Generation",
+    micro: "Pipeline growth",
+    description: "End-to-end lead generation systems that consistently bring in high-quality prospects.",
+    tags: ["Funnels", "CRM", "Automation"],
+    slug: "/services/lead-generation-campaigns",
+  },
+  {
+    title: "Social Media Marketing",
+    micro: "Brand growth",
+    description: "Strategic social media management that builds authority, engagement, and loyal communities.",
+    tags: ["Content", "Strategy", "Community"],
+    slug: "/services/social-media-marketing",
+  },
+  {
+    title: "Content Marketing",
+    micro: "Content & authority",
+    description: "Engaging, SEO-optimized content that ranks on Google and converts visitors into customers.",
+    tags: ["Blogs", "SEO Content", "Copywriting"],
+    slug: "/services/content-marketing",
+  },
+  {
+    title: "Email Marketing",
+    micro: "Retention & nurture",
+    description: "Automated email campaigns that nurture leads, increase retention, and boost lifetime value.",
+    tags: ["Automation", "Sequences", "CRM"],
+    slug: "/services/email-marketing",
+  },
+  {
+    title: "AI Automation",
+    micro: "Intelligent systems",
+    description: "AI-powered workflows and automation systems that scale your marketing operations efficiently.",
+    tags: ["AI Workflows", "Chatbots", "Automation"],
+    slug: "/services/ai-automation",
+  },
 ];
 
 const ServicesPage = () => {

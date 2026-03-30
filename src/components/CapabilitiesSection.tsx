@@ -50,21 +50,21 @@ const services = [
     description:
       "ROI-focused paid advertising campaigns across Google and social platforms.",
     image:ppc,
-    href: "/services/ppc-services",
+    href: "/services/google-ads",
   },
   {
     title: "Meta Ads  ",
     description:
       "ROI-focused paid advertising campaigns across  social platforms.",
     image:meta,
-    href: "/services/ppc-services",
+    href: "/services/meta-ads",
   },
     {
     title: "Content Marketing   ",
     description:
       "ROI-focused paid advertising campaigns across Google and social platforms.",
     image:cm,
-    href: "/services/ppc-services",
+    href: "/services/content-marketing",
   },
    {
     title: "Ai Automation  ",
@@ -79,7 +79,7 @@ const services = [
     description:
       "Custom AI integrations and workflow automation that scale marketing operations.",
     image: email,
-    href: "/services/ai-automation",
+    href: "/services/email-marketing",
   },
 ];
 

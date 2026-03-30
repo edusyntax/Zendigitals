@@ -34,6 +34,15 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
+  
+const handleChatClick = () => {
+  window.open(
+    "https://wa.me/919753456333?text=Hi%20I%20want%20to%20know%20more%20about%20your%20services",
+    "_blank"
+  );
+};
+
+
   return (
     <section className="relative min-h-[680px] md:min-h-screen flex items-center overflow-hidden pt-28 md:pt-32 pb-12">
 
@@ -124,12 +133,12 @@ const HeroSection = () => {
               Get Free Strategy →
             </MagneticButton>
 
-            <MagneticButton
-              className="glass rounded-full text-base font-medium  px-8 h-[54px] w-full sm:w-auto flex items-center justify-center"
-              onClick={() => setModalOpen(true)}
-            >
-              View Case Studies
-            </MagneticButton>
+<MagneticButton
+  className="glass rounded-full text-base font-medium px-8 h-[54px] w-full sm:w-auto flex items-center justify-center"
+  onClick={handleChatClick}
+>
+  Chat with us
+</MagneticButton>
 
           </div>
 

@@ -7,25 +7,25 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const milestones = [
   {
-    image: "./src/assets/services/design.jpeg",
+    image: "/src/assets/services/design.jpeg",
     title: "Discover",
     caption: "Clarity before execution.",
     flipText: "We audited acquisition channels and infrastructure.",
   },
   {
-    image: "./src/assets/services/plan.jpeg",
+    image: "/src/assets/services/plan.jpeg",
     title: "Architect",
     caption: "System blueprint defined.",
     flipText: "Defined leverage layers and automation structure.",
   },
   {
-    image: "./src/assets/services/excute.jpeg",
+    image: "/src/assets/services/excute.jpeg",
     title: "Design",
     caption: "Authority engineered.",
     flipText: "Psychology-driven interface systems deployed.",
   },
   {
-    image: "./src/assets/services/roi.jpeg",
+    image: "/src/assets/services/roi.jpeg",
     title: "Build",
     caption: "Infrastructure scaled.",
     flipText: "Secure, high-performance architecture.",

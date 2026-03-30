@@ -6,14 +6,14 @@ import { useTheme } from "next-themes";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/", hasDropdown: true },
+  { label: "Services", href: "/services", hasDropdown: true },
   { label: "Testimonials", href: "/testimonials" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
 const SERVICE_ITEMS = [
-  { label: "Website Design", description: "Stunning, conversion-focused websites", href: "/services/website-design" },
+  { label: "Web Development", description: "Stunning, conversion-focused websites", href: "/services/website-design" },
   { label: "SEO Services", description: "Organic search dominance", href: "/services/seo-services" },
   { label: "Google Ads", description: "High-converting lead campaigns", href: "/services/google-ads" },
   { label: "Lead Generation", description: "High-converting lead campaigns", href: "/services/lead-generation-campaigns" },
