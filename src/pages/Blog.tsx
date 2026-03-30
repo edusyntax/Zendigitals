@@ -125,6 +125,9 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal"; 
+import PageLayout from "@/components/PageLayout";
+import PageHero from "@/components/PageHero";
+import SEOHead from "@/components/SEOHead";
 interface TiltCardProps {
   children: React.ReactNode;
   className?: string;
@@ -214,9 +217,15 @@ const posts: Post[] = [
 
 const BlogSection = () => {
   return (
+    <PageLayout>
+      <SEOHead
+        title="Blog — Digital Marketing Insights"
+        description="Actionable strategies, industry analysis, and expert perspectives on digital marketing, SEO, AI, and growth from the VirelaTech team."
+      />
+      <PageHero overline="Blog" title="Insights for" titleAccent="growth-driven brands" description="Actionable strategies, industry analysis, and expert perspectives on digital marketing, SEO, AI, and growth." />     
     <section
       id="blog"
-      className="relative py-6 md:py-12 px-6 md:px-16 lg:px-24"
+      className="relative py-6 md:py-12 px-6 md:px-24 lg:px-24"
     >
       <ScrollReveal>
 <p className="text-xs tracking-[0.4em] uppercase text-accent mb-2">
@@ -300,6 +309,7 @@ const BlogSection = () => {
         ))}
       </div>
     </section>
+    </PageLayout>
   );
 };
 export default BlogSection;
