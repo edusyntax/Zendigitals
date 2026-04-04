@@ -103,13 +103,19 @@ export default {
           from: { "--num": "0" },
           to: { "--num": "var(--target)" },
         },
+         marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "float": "float 6s ease-in-out infinite",
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+         marquee: "marquee 25s linear infinite",
       },
+      
     },
   },
   plugins: [tailwindcssAnimate],

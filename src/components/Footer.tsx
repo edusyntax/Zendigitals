@@ -57,12 +57,12 @@ const Footer = () => {
           {/* Column 1 — Company */}
           <ScrollReveal>
             <div>
-              <h3 className="text-foreground font-grotesk font-bold text-xl tracking-tight mb-4">ZENDIGITALZ</h3>
+              <h3 className="text-foreground font-grotesk font-bold text-xl tracking-tight mb-4">VirelaTech</h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                 Engineering digital authority for visionary brands.
               </p>
               <p className="text-muted-foreground/50 text-xs font-grotesk">
-                © {new Date().getFullYear()} Zendigitalz. All rights reserved.
+                © {new Date().getFullYear()} VirelaTech. All rights reserved.
               </p>
             </div>
           </ScrollReveal>
@@ -149,15 +149,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <motion.button
-        onClick={scrollToTop}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="fixed bottom-6 right-6 z-50 glass w-10 h-10 rounded-full flex items-center justify-center text-foreground hover:bg-accent/10 transition-colors text-sm"
-        data-hover
-      >
-        ↑
-      </motion.button>
+  
     </footer>
   );
 };

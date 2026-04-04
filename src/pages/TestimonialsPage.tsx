@@ -5,13 +5,14 @@ import SectionTransition from "@/components/SectionTransition";
 import TiltCard from "@/components/TiltCard";
 import UrgencyCTA from "@/components/UrgencyCTA";
 import SEOHead from "@/components/SEOHead";
+import HoverFlexSection from "@/components/ui/Faq";
 
 const testimonials = [
-  { quote: "Zendigitalz didn't just build our platform — they engineered our market position. Revenue up 340% in 8 months.", name: "Alexei Volkov", role: "CEO", company: "Nebula Finance" },
+  { quote: "VirelaTech didn't just build our platform — they engineered our market position. Revenue up 340% in 8 months.", name: "Alexei Volkov", role: "CEO", company: "Nebula Finance" },
   { quote: "The precision. The craft. Every pixel, every interaction — deliberately architected. This is what elite looks like.", name: "Maya Chen", role: "CPO", company: "Void Studios" },
-  { quote: "We interviewed 12 agencies. Zendigitalz was the only team that understood systems, not just aesthetics.", name: "James Whitfield", role: "Founder", company: "Chromatic" },
+  { quote: "We interviewed 12 agencies. VirelaTech was the only team that understood systems, not just aesthetics.", name: "James Whitfield", role: "Founder", company: "Chromatic" },
   { quote: "Our conversion rate tripled. Our brand perception shifted entirely. They don't build websites — they build authority.", name: "Sophia Laurent", role: "CMO", company: "Scale Dynamics" },
-  { quote: "Working with Zendigitalz felt like upgrading from a sedan to a spacecraft. Technically flawless execution.", name: "Raj Patel", role: "CTO", company: "Apex Protocol" },
+  { quote: "Working with VirelaTech felt like upgrading from a sedan to a spacecraft. Technically flawless execution.", name: "Raj Patel", role: "CTO", company: "Apex Protocol" },
   { quote: "Our organic traffic increased by 400% in 6 months. The SEO strategy they built is a competitive moat.", name: "Elena Rodriguez", role: "VP Marketing", company: "DataCore" },
   { quote: "The AI automation systems they built saved us 30 hours per week in manual campaign management. Game changer.", name: "Michael Torres", role: "Head of Growth", company: "Quantum Labs" },
   { quote: "From day one, the team showed a level of strategic thinking we hadn't seen from any other agency. Exceptional.", name: "Sarah Kim", role: "Director of Digital", company: "Meridian Health" },
@@ -30,13 +31,13 @@ const TestimonialsPage = () => (
   <PageLayout>
     <SEOHead
       title="Client Testimonials"
-      description="Read what our clients say about working with Zendigitalz. Real results, real stories from industry leaders who trust our digital marketing expertise."
+      description="Read what our clients say about working with VirelaTech. Real results, real stories from industry leaders who trust our digital marketing expertise."
     />
     <PageHero
       overline="Testimonials"
       title="Trusted by brands that demand"
       titleAccent="excellence"
-      description="Hear directly from the leaders and teams who've experienced the Zendigitalz difference."
+      description="Hear directly from the leaders and teams who've experienced the VirelaTech difference."
     />
 
     <SectionTransition>
@@ -68,41 +69,11 @@ const TestimonialsPage = () => (
     </SectionTransition>
 
     <SectionTransition>
-      <section className="py-20 site-container">
-        <ScrollReveal>
-          <p className="text-accent font-grotesk text-xs uppercase tracking-[0.3em] mb-4">Client Stories</p>
-          <h2 className="editorial-heading text-[clamp(1.8rem,4vw,3.5rem)] text-foreground mb-16 max-w-2xl">
-            What our clients <span className="font-serif italic text-gradient-accent">say</span>
-          </h2>
-        </ScrollReveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {testimonials.map((t, i) => (
-            <ScrollReveal key={t.name} delay={i * 0.06}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-8 h-full flex flex-col group border border-foreground/[0.12] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.03] via-transparent to-transparent pointer-events-none rounded-2xl" />
-                  <span className="absolute top-4 left-6 text-[80px] leading-none font-serif text-accent/[0.06] pointer-events-none select-none">"</span>
-                  <p className="text-foreground text-lg md:text-xl leading-relaxed mb-6 flex-1 font-light relative z-10">"{t.quote}"</p>
-                  <div className="flex items-center gap-4 relative z-10">
-                    <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-                      <span className="text-accent font-grotesk text-sm font-bold">{t.name[0]}</span>
-                    </div>
-                    <div>
-                      <p className="text-foreground font-grotesk font-semibold text-sm">{t.name}</p>
-                      <p className="text-muted-foreground text-xs">{t.role}, {t.company}</p>
-                    </div>
-                  </div>
-                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-1/2 h-px bg-accent/0 group-hover:bg-accent/40 blur-sm transition-all duration-500" />
-                </div>
-              </TiltCard>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
+   <HoverFlexSection/>
     </SectionTransition>
 
     <SectionTransition>
-      <UrgencyCTA headline="Ready to write your" headlineAccent="success story?" primaryCTA="Start Your Growth Strategy" secondaryCTA="Book a Free Strategy Call" urgencyNote="Join 150+ brands that trust Zendigitalz" sourcePage="Testimonials Page" />
+      <UrgencyCTA headline="Ready to write your" headlineAccent="success story?" primaryCTA="Start Your Growth Strategy" secondaryCTA="Book a Free Strategy Call" urgencyNote="Join 150+ brands that trust VirelaTech" sourcePage="Testimonials Page" />
     </SectionTransition>
   </PageLayout>
 );

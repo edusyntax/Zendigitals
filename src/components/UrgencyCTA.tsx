@@ -35,6 +35,13 @@ const UrgencyCTA = ({
     setModalOpen(true);
   };
 
+  const handleChatClick = () => {
+  window.open(
+    "https://wa.me/919753456333?text=Hi%20I%20want%20to%20know%20more%20about%20your%20services",
+    "_blank"
+  );
+};
+
   if (variant === "inline") {
     return (
       <>
@@ -116,11 +123,11 @@ const UrgencyCTA = ({
                 {primaryCTA}
               </MagneticButton>
               <MagneticButton
-                className="glass rounded-full text-sm sm:text-base font-medium text-foreground w-full sm:w-auto h-[48px] md:h-[52px] px-7 min-w-[180px] flex items-center justify-center"
-                onClick={() => openModal(secondaryCTA)}
-              >
-                {secondaryCTA}
-              </MagneticButton>
+  className="glass rounded-full text-base font-medium px-8 h-[54px] w-full sm:w-auto flex items-center justify-center"
+  onClick={handleChatClick}
+>
+  Chat with us
+</MagneticButton>
             </div>
           </ScrollReveal>
 

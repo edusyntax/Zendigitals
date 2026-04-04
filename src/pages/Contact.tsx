@@ -60,16 +60,16 @@ const ContactPage = () => {
     <PageLayout>
       <SEOHead
         title="Contact Us"
-        description="Get in touch with Zendigitalz. Book a free strategy consultation and discover how we can accelerate your digital growth."
+        description="Get in touch with VirelaTech. Book a free strategy consultation and discover how we can accelerate your digital growth."
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "ContactPage",
-          name: "Contact Zendigitalz",
+          name: "Contact VirelaTech",
           description: "Get in touch for a free strategy consultation.",
           mainEntity: {
             "@type": "Organization",
-            name: "Zendigitalz",
-            email: "hello@zendigitalz.com",
+            name: "VirelaTech",
+            email: "hello@VirelaTech.com",
             telephone: "+1-555-000-0000",
           },
         }}
@@ -86,7 +86,7 @@ const ContactPage = () => {
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
                 <div className="space-y-6 mb-10">
-                  <div><p className="text-accent font-grotesk text-xs uppercase tracking-[0.3em] mb-2">Email</p><p className="text-foreground text-sm">hello@zendigitalz.com</p></div>
+                  <div><p className="text-accent font-grotesk text-xs uppercase tracking-[0.3em] mb-2">Email</p><p className="text-foreground text-sm">hello@VirelaTech.com</p></div>
                   <div><p className="text-accent font-grotesk text-xs uppercase tracking-[0.3em] mb-2">Phone</p><p className="text-foreground text-sm">+1 (555) 000-0000</p></div>
                   <div><p className="text-accent font-grotesk text-xs uppercase tracking-[0.3em] mb-2">Office</p><p className="text-foreground text-sm">San Francisco, CA</p><p className="text-muted-foreground text-xs mt-1">Remote-first with offices in SF, NY, and London</p></div>
                 </div>

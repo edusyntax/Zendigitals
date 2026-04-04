@@ -117,7 +117,7 @@ const BlogArticle = () => {
                 </div>
               )}
               <div>
-                <p className="text-foreground text-sm font-medium">{profile?.display_name ?? "Zendigitalz"}</p>
+                <p className="text-foreground text-sm font-medium">{profile?.display_name ?? "VirelaTech"}</p>
                 {profile?.bio && <p className="text-muted-foreground text-xs line-clamp-1">{profile.bio}</p>}
               </div>
             </div>

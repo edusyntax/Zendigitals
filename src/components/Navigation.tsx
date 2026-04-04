@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getLenis } from "./SmoothScroll";
+import { useTheme } from "next-themes";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -12,11 +13,14 @@ const NAV_LINKS = [
 ];
 
 const SERVICE_ITEMS = [
-  { label: "Website Design", description: "Stunning, conversion-focused websites", href: "/services/website-design" },
+  { label: "Web Development", description: "Stunning, conversion-focused websites", href: "/services/website-design" },
   { label: "SEO Services", description: "Organic search dominance", href: "/services/seo-services" },
+  { label: "Google Ads", description: "High-converting lead campaigns", href: "/services/google-ads" },
   { label: "Lead Generation", description: "High-converting lead campaigns", href: "/services/lead-generation-campaigns" },
   { label: "Social Media Marketing", description: "Community & brand growth", href: "/services/social-media-marketing" },
-  { label: "PPC Services", description: "ROI-focused paid advertising", href: "/services/ppc-services" },
+  {label:"content marketing", description: "Engaging content that ranks and converts", href: "/services/content-marketing"},  
+  {label:"email marketing", description: "Nurture leads and drive repeat business", href: "/services/email-marketing"},
+  { label: "Meta Ads", description: "Facebook and Instagram advertising", href: "/services/meta-ads" },
   { label: "AI Automation", description: "Intelligent marketing systems", href: "/services/ai-automation" },
 ];
 
@@ -28,6 +32,8 @@ const Navigation = () => {
   const dropdownTimeout = useRef<ReturnType<typeof setTimeout>>();
   const navigate = useNavigate();
   const location = useLocation();
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -97,7 +103,7 @@ const Navigation = () => {
         style={{ position: "fixed", top: 24, left: 0, right: 0, zIndex: 1002 }}
       >
         <nav
-          className={`mx-auto w-[calc(100vw-2rem)] max-w-5xl rounded-full px-5 py-3 md:px-8 md:py-4 transition-all duration-500 overflow-visible ${
+          className={`mx-auto border  border-blue-200 w-[calc(100vw-2rem)] max-w-5xl rounded-full px-5 py-3 md:px-8 md:py-4 transition-all duration-500 overflow-visible ${
             scrolled ? "glass-strong" : "glass"
           }`}
         >
@@ -110,7 +116,7 @@ const Navigation = () => {
               className="text-foreground font-grotesk font-bold text-sm md:text-base tracking-tight flex-shrink-0"
               data-hover
             >
-              ZENDIGITALZ
+              VirelaTech
             </a>
 
             {/* Center: Nav links (desktop only) */}
@@ -130,7 +136,7 @@ const Navigation = () => {
                         href={link.href}
                         onClick={(e) => handleNavClick(e, link.href)}
                         className={`relative text-[11px] font-medium tracking-wider uppercase transition-colors duration-300 group whitespace-nowrap inline-flex items-center gap-1 ${
-                          active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                          active ? "text-foreground" : "text-foreground hover:text-foreground"
                         }`}
                         data-hover
                       >
@@ -181,7 +187,7 @@ const Navigation = () => {
                               ))}
                               <div className="h-px bg-border my-1" />
                               <a
-                                href="/services"
+                                href="/"
                                 onClick={(e) => handleNavClick(e, "/services")}
                                 className="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-accent/10 transition-colors duration-200"
                                 data-hover
@@ -205,7 +211,7 @@ const Navigation = () => {
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
                     className={`relative text-[11px] font-medium tracking-wider uppercase transition-colors duration-300 group whitespace-nowrap ${
-                      active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                      active ? "text-foreground" : "text-foreground hover:text-foreground"
                     }`}
                     data-hover
                   >
@@ -222,6 +228,21 @@ const Navigation = () => {
 
             {/* Right: CTA + Hamburger */}
             <div className="flex items-center gap-3 md:justify-self-end flex-shrink-0">
+              {/* Theme toggle */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setTheme(isDark ? "light" : "dark")}
+                aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+                className="glass w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center text-xs text-foreground"
+                data-hover
+              >
+                {isDark ? (
+                  <span className="inline-block">☼</span>
+                ) : (
+                  <span className="inline-block">☾</span>
+                )}
+              </motion.button>
               <motion.div
                 className="relative group"
                 whileHover={{ scale: 1.03 }}
@@ -336,7 +357,7 @@ const Navigation = () => {
                                   key={item.href}
                                   href={item.href}
                                   onClick={(e) => handleNavClick(e, item.href)}
-                                  className="text-muted-foreground text-base sm:text-lg font-grotesk hover:text-accent transition-colors"
+                                  className="text-foreground  text-base sm:text-lg font-grotesk hover:text-accent transition-colors"
                                   data-hover
                                 >
                                   {item.label}
